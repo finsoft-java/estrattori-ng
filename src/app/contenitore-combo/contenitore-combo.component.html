@@ -1,0 +1,178 @@
+<form novalidate #demoComboForm="ngForm">
+  <!-- Form Valid status: {{demoComboForm.form.valid}} -->
+  <div>
+
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Combo lista di stringhe'">
+          <nbp-combo #combo1 [nbpDataSource]="itemsDataSource" name="combo1" [(ngModel)]="selectedItem" [required]="true" [disabled]="disabled"
+            nbpShowValidation=true [nbpErrorMessage]="customErrorMessage" placeholder="Combo Box Mock" nbpShowEmptyValue>
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Model'">
+          <nbp-input-text name="componentName_2" [(ngModel)]="selectedItem" [required]="required">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <br />
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Combo lista di stringhe'">
+          <nbp-combo #combo2 name="combo2" [nbpDataSource]="items2DataSource" placeholder="Object Combo Box" nbpViewField="description"
+            [required]="required" [disabled]="disabled" [(ngModel)]="selectedObjectItem2">
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Model'">
+          <nbp-input-text name="componentName_3" [(ngModel)]="selectedObjectItem2.description" [required]="required">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <br />
+    </div>
+
+    <!-- <h3>Esempio Combo con datasource: Array di Object senza valore iniziale selezionato</h3> -->
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Combo lista di oggetti senza selezione iniziale'">
+          <nbp-combo #combo3 name="combo3" [(ngModel)]="selectedObjectItem3" [nbpDataSource]="items2DataSource" placeholder="select an Object ..."
+            [required]="required" [disabled]="disabled" nbpViewField="description" [tabindex]="4">
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Model'">
+          <nbp-input-text name="componentName_4" [ngModel]="selectedObjectItem3?.description" (ngModelChange)="selectedObjectItem3.description = $event"
+            [required]="required">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <br />
+    </div>
+
+    <!-- <h3>Esempio Combo con datasource: Array di Object e nbpValueField indicato con 'dot-notation' (content.description)</h3> -->
+
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Combo lista di oggetti con value in dot notation'">
+          <nbp-combo #combo5 name="combo5" [(ngModel)]="selectedObjectItem5" [nbpDataSource]="items3DataSource" placeholder="select an Object ..."
+            [required]="required" [disabled]="disabled" nbpViewField="content.description">
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Model'">
+          <nbp-input-text name="componentName_5" [ngModel]="selectedObjectItem5?.content.description" (ngModelChange)="selectedObjectItem5.content.description = $event"
+            [required]="required">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <br />
+    </div>
+
+    <!-- <h3>Esempio Combo con datasource: Array di Object e applicazione di nbpFilter</h3>
+     -->
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Filtro sui valori della combo'">
+          <nbp-combo #comboPipes name="pipes" [(ngModel)]="filter" [nbpDataSource]="pipesDataSource" placeholder="select a filter ..."
+            nbpViewField="description" nbpKeyField="id" nbpBindingToKeyField>
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Combo lista di oggetti con filtro'">
+          <nbp-combo #combo6 name="combo6" [(ngModel)]="selectedObjectItem6" [nbpDataSource]="items2DataSource" placeholder="select an Object ..."
+            [required]="required" [disabled]="disabled" nbpViewField="description" [nbpFilter]="filter">
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+    </div>
+    <!--<div class="row">
+   
+
+    <div class="row"><br /></div>
+
+    <!-- <h3>Esempio Combo con datasource from http service</h3> -->
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Combo lista di oggetti recuperati da file .json'">
+          <nbp-combo *ngIf="dynamicDataSource" #combo7 name="combo7" [(ngModel)]="selectedObjectItem7" [nbpDataSource]="dynamicDataSource"
+            placeholder="select an Object ..." [required]="required" [disabled]="disabled" nbpViewField="description">
+          </nbp-combo>
+        </nbp-input-container>
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Model'">
+          <nbp-input-text name="componentName_6" [ngModel]="selectedObjectItem7?.description" (ngModelChange)="selectedObjectItem7.description = $event"
+            [required]="required">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+
+        <!-- Combo con filtro contains -->
+
+        <nbp-input-container [nbpLabel]="'Combo con filtro contains'">
+          <nbp-combo-filter name="comboFilter" [(ngModel)]="selectedItem8" [showallitems]="true" [nbpDataSource]="items4DataSource" placeholder="seleziona un Object ..."
+            nbpViewField="description" [disabled]="disabled" [tabindex]="5">
+          </nbp-combo-filter>
+        </nbp-input-container>
+
+        <!-- ------------------------- -->
+
+      </div>
+      <div class="col-md-10">
+        <nbp-input-container [nbpLabel]="'Model'">
+          <nbp-input-text name="componentName_8" [ngModel]="selectedItem8 ? selectedItem8.id + ' | ' + selectedItem8.description : ''"
+            [required]="required">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        <nbp-input-container  [nbpLabel]="'Combo lista di stringhe'">
+          <nbp-combo-multi 
+            [nbpDataSource]="itemsDataSource"
+            name="selectedStringItems"
+            [(ngModel)]="selectedItems"
+            [required] ="required"
+            [nbpShowValidation]="showValidation" 
+            [nbpErrorMessage]="customErrorMessage"
+            placeholder= "Combo Box Mock">
+          </nbp-combo-multi>
+        </nbp-input-container>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</form>

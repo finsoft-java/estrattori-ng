@@ -1,0 +1,98 @@
+<div class="row col-md-24">
+
+  <ng-container *ngIf="!useIndexAlphabeticFilter">
+    <nbp-pagination-letters [chars]="chars" (nbpSelectChar)="filterPaginatoreLettera($event)"></nbp-pagination-letters>
+  </ng-container>
+  <ng-container *ngIf="useIndexAlphabeticFilter">
+    <nbp-index-alphabetic [nbpChars]="chars" (nbpSelectChar)="filterPaginatoreLettera($event)"></nbp-index-alphabetic>
+  </ng-container>
+
+  <div class="row col-xs-24 col-sm-24 col-md-24 mrg-t-20">
+
+    <div class="table-container header-col" [ngClass]="{ 'table-scrollbar-auto': tableScrollbarAuto, 'table-scrollbar-scroll': tableScrollbarScroll ,'tab-grid':tabGrid, 'tab-row':tabRow, 'tab-col':tabCol  }">
+
+      <table>
+
+        <thead *ngFor="let data of colonne">
+          <th class="table-label">
+            {{data.id}}
+            <div class="sort-button" (click)="sortBy('id')">
+              <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting('id', false)}"></div>
+              <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting('id', true)}"></div>
+            </div>
+          </th>
+          <th class="table-label">
+            {{ data.name }}
+            <div class="sort-button" (click)="sortBy('name')">
+              <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting('name', false)}"></div>
+              <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting('name', true)}"></div>
+            </div>
+          </th>
+          <th class="table-label">
+            {{data.surname}}
+            <div class="sort-button" (click)="sortBy('surname')">
+              <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting('surname', false)}"></div>
+              <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting('surname', true)}"></div>
+            </div>
+          </th>
+          <th class="table-label">
+            {{data.info}}
+            <div class="sort-button" (click)="sortBy('street')">
+              <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting('street', false)}"></div>
+              <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting('street', true)}"></div>
+            </div>
+          </th>
+          <th class="table-label">
+            {{data.idAuth}}
+            <div class="sort-button" (click)="sortBy('accountInfo.password')">
+              <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting('accountInfo.password', false)}"></div>
+              <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting('accountInfo.password', true)}"></div>
+            </div>
+          </th>
+          <th class="table-label">
+            {{data.password}}
+            <div class="sort-button" (click)="sortBy('accountInfo.uid')">
+              <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting('accountInfo.uid', false)}"></div>
+              <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting('accountInfo.uid', true)}"></div>
+            </div>
+          </th>
+        </thead>
+
+        <tbody *ngFor="let data of dataTableFilteredPL; let i=index">
+
+          <tr class="table-row" *ngIf="(currentPageNumber-1)*5 <= i && i < currentPageNumber * 5">
+
+            <!-- <tr class="table-row"> -->
+            <td class="table-cell text-center selection-cell">
+              {{ data.id}}
+            </td>
+            <td class="table-cell text-center selection-cell">
+              {{data.name}}
+            </td>
+            <td class="table-cell text-center selection-cell">
+              {{data.surname}}
+            </td>
+            <td class="table-cell text-center selection-cell">
+              {{ data.street}}
+            </td>
+            <td class="table-cell text-center selection-cell">
+              {{data.accountInfo.password}}
+            </td>
+            <td class="table-cell text-center selection-cell">
+              {{data.accountInfo.uid}}
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- dataTableFiltered -->
+
+    <pagination [nbpPaginationStatus]="_tableUtilServicePL.currentPageStatus" (nbpOnFirst)="_onFirstPage($event)" (nbpOnLast)="_onLastPage($event)"
+      (nbpOnNext)="_onNextPage($event)" (nbpOnGoToPage)="_onGoToPage($event)" (nbpOnPrev)="_onPrevPage($event)" (nbpOnPageChange)="_onPageChange()"></pagination>
+
+  </div>
+</div>

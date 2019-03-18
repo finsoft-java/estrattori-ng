@@ -1,0 +1,378 @@
+@import (less) "./../../../less/color.less";
+@import (less) "../common.less";
+
+.table-select {
+  border-collapse: separate;
+}
+
+.content-accordion {
+  background-color: @dark_white;
+  .accordion-panel {
+    text-align: center;
+    font-size: 0.75em;
+    font-family: Arial;
+    font-style: normal;
+    height: 6.25em;
+  }
+}
+
+.table-cell {
+  position: relative;
+  padding: 0 0.688em 0 0.688em;
+  vertical-align: middle;
+  &.with-borders {
+    border: 0.0625em solid @light_gray;
+  }
+  &.with-checkbox {
+    width: 3.429em;
+    padding: 0;
+    text-align: center;
+  }
+  &.with-accordion {
+    width: 3.429em;
+    padding: 0;
+    text-align: center;
+  }
+  &.cell-select {
+    color: @gray;
+    height: 4.375em;
+    border: 0.0625em solid @light_gray;
+    background-color: @lightest_gray;
+    &.select {
+      background-color: @lightest_green;
+      border: 0.0625em solid @gray;
+      border-top: none;
+    }
+  }
+  a {
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.table-pagination {
+  margin-top: 0.625em;
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .table-page-btn {
+    display: inline-block;
+    color: @green;
+    cursor: pointer;
+    margin-top: 0.313em;
+    &.disabled {
+      color: @gray;
+      cursor: auto;
+    }
+    .page-btn-arrow {
+      font-size: 1.250em;
+      vertical-align: middle;
+    }
+    .page-btn-text {
+      padding: 0 0.625em 0 0.625em;
+      font-size: 0.813em;
+      font-weight: bold;
+    }
+    .table-page-number {
+      display: inline-block;
+      border: 1px solid @green;
+      font-weight: bold;
+      color: @green;
+      background: @white;
+      text-align: center;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+      font-size: 0.938em;
+      line-height: 2em;
+      margin: 0 0.125em 0 0.125em;
+      cursor: pointer;
+      &.backward {
+        margin-right: -0.125em;
+      }
+      &.forward {
+        margin-left: -0.125em;
+      }
+    }
+    .table-page-number.active {
+      color: @white;
+      background: @green;
+    }
+  }
+  .table-pagination-center {
+    text-align: center;
+    .table-page-btn {
+      margin-top: 0;
+    }
+  }
+}
+
+.sort-button {
+  cursor: pointer;
+}
+
+.annulla-check {
+  display: inline-block;
+  color: @green;
+  cursor: pointer;
+  margin-top: 0.313em;
+  .page-btn-text {
+    padding: 0 0.625em 0 0.625em;
+    font-size: 0.813em;
+    font-weight: bold;
+  }
+}
+
+.row-nowrap {
+  white-space: nowrap;
+}
+
+.horizontal-scrollbar {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.table-full-width {
+  width: 100%;
+}
+
+.auto-width {
+  table-layout: auto !important;
+}
+
+.fixed-width {
+  table-layout: fixed !important;
+}
+
+.table-image {
+  text-align: center;
+  padding: 0.625em !important;
+}
+
+//tooltip al mouseover
+[tooltip-hover]:before {
+  /* needed - do not touch */
+  content: attr(tooltip-hover);
+  position: absolute;
+  overflow: none;
+  opacity: 0;
+  /* customizable */
+  //transition: all 0.15s ease;
+  padding: 1.25em;
+  color: @white;
+  border-radius: 0.125em;
+  //box-shadow: 0.125em 0.125em 1px silver;
+  background: @darkest_gray;
+  margin-top: 0;
+  margin-left: 0
+}
+
+[tooltip-hover]:hover:before {
+  /* needed - do not touch */
+  opacity: 1;
+  overflow: none;
+  /* customizable */
+  background: @darkest_gray;
+  margin-top: -50px;
+  //margin-left: 1.25em;
+}
+
+[tooltip-hover]:not([tooltip-persistent]):before {
+  pointer-events: none;
+}
+
+//tooltip al click
+[tooltip-click]:before {
+  /* needed - do not touch */
+  content: attr(tooltip-click);
+  position: absolute;
+  opacity: 0;
+  /* customizable */
+  //transition: all 0.15s ease;
+  padding: 1.25em;
+  color: @white;
+  border-radius: 0.125em;
+  //box-shadow: 0.125em 0.125em 1px silver;
+  background: @darkest_gray;
+  margin-top: 0;
+  margin-left: 0
+}
+
+[tooltip-click]:visited:before {
+  /* needed - do not touch */
+  opacity: 1;
+  /* customizable */
+  background: @darkest_gray;
+  margin-top: -50px;
+  //margin-left: 1.25em;
+}
+
+[tooltip-click]:not([tooltip-persistent]):before {
+  pointer-events: none;
+}
+
+.tooltipClickLabel {
+  position: absolute;
+  padding: 1.25em;
+  color: #FFFFFF;
+  border-radius: 0.125em;
+  background: #323232;
+  margin-top: 0;
+  margin-left: 0;
+  bottom: 40px;
+  z-index: 1000;
+}
+
+.tooltipClickLabel:after {
+  content: "\A";
+  color: #323232;
+  width: 0;
+  height: 0;
+  /* z-index: 10; */
+  border-left: 0.625em solid transparent;
+  border-right: 0.625em solid transparent;
+  border-top: 0.625em solid;
+  /* float: right; */
+  position: absolute;
+  /* margin-right: 6.8em; */
+  margin-top: 2.813em;
+  left: 50%;
+}
+
+.tooltipClickLabel .closeTip {
+  position: absolute;
+  top: 0.125em;
+  right: 5px;
+  z-index: 1000;
+  color: @orange;
+  cursor: pointer;
+}
+
+.green-link {
+  color: @green;
+}
+
+// @import (less) "../../tabelle/table/table.component.contrast.less";
+:host-context(.contrasto-on) {
+  .table-label {
+    color: @white;
+    border-color: @white;
+    background-color: @black;
+    &.label-select {
+      color: @black;
+      border-color: @white;
+      background-color: @black;
+      &.select {
+        background-color: @white;
+        border-color: @black;
+      }
+    }
+  }
+  
+  .table-row {
+    background-color: @white;
+    color: @black;
+    border-color: @black;
+    &.clickable {
+      &:hover {
+        color: @white;
+        background-color: @black;
+      }
+    }
+    &.highlighted {
+      color: @white;
+      background-color: @black;
+    }
+  }
+  .row-yellow {
+    background-color: @white;
+  }
+  .cell-red {
+    background-color: @white;
+  }
+  .content-accordion {
+    background-color: @white;
+  }
+  .table-cell {
+    &.with-borders {
+      border-color: @black;
+    }
+    &.cell-select {
+      color: @black;
+      border-color: @black;
+      background-color: @white;
+      &.select {
+        border-color: @white;
+        background-color: @black;
+      }
+    }
+  }
+  .table-pagination {
+    .table-page-btn {
+      color: @black;
+      &.disabled {
+        color: @white;
+      }
+      .table-page-number {
+        border-color: @black;
+        color: @black;
+        background: @white;
+      }
+      .table-page-number.active {
+        color: @white;
+        background: @black;
+      }
+    }
+  }
+  .arrow-up {
+    border-bottom-color: @white;
+  }
+  .arrow-up::before {
+    border-bottom-color: @black;
+  }
+  .arrow-down {
+    border-top-color: @white;
+  }
+  .arrow-down::before {
+    border-top-color: @black;
+  }
+  .annulla-check {
+    color: @black;
+  }
+  [tooltip-hover]:before {
+    color: @white;
+    background: @black;
+  }
+  [tooltip-hover]:hover:before {
+    background: @black;
+  }
+  [tooltip-click]:before {
+    color: @white;
+    background: @black;
+  }
+  [tooltip-click]:visited:before {
+    background: @black;
+  }
+  .tooltipClickLabel {
+    color: @white;
+    background: @black;
+  }
+  .tooltipClickLabel:after {
+    color: @black;
+  }
+  .tooltipClickLabel .closeTip {
+    color: @black;
+  }
+  .green-link {
+    color: @black;
+  }
+}
+.tr-height{
+  height: 35px;
+}

@@ -1,0 +1,15 @@
+@import (less) "./../../less/color.less";
+
+.background-panel-green {
+    background-color: @green;
+}
+
+.background-panel-gray {
+    background-color: @lightest_gray;
+}
+
+:host-context(.contrasto-on) {
+    .background-panel-green, .background-panel-gray {
+        background-color: @white;
+    }
+}

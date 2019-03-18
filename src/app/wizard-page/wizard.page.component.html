@@ -1,0 +1,7 @@
+<div class="container">
+
+  <app-wizard [steps]="steps" (wizardCompleted)="onWizardCompleted()" *ngIf="!isCompleted"></app-wizard>
+
+  <span class="completion-message" *ngIf="isCompleted">Ricevuto evento completamento wizard</span>
+
+</div>

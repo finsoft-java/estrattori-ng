@@ -1,0 +1,40 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!--<app-sequenziale *ngIf = "location === 'sequenziale' "></app-sequenziale>-->
+<nbp-header-generic [nbpTranslate]="false" [iconClick]="customFunction" [name]="nameHeader" [burger]="burgerMenu" [operation]="menuOperation"
+  [user]="userDemo" [clients]="clientsInfo" [clientTitle]="clientTitle" [userClick]="funzioneCustom" [showExit]="true" [exitClick]="funzioneCustom">
+  <!-- <nbp-button class="pull-right" style="margin-top:0.8%" [nbpLabel]="'Button Custom' | translate"></nbp-button> -->
+</nbp-header-generic>
+
+<!-- <nbp-header [nbpName]="'Nome appilcativo'" [nbpChannel]="1" [nbpLogo]="nbpLogoCustom"></nbp-header> -->
+
+<app-titled-panel></app-titled-panel>
+
+<div style="min-height: 100%">
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- <div class="row">
+  <div class="col-md-24 text-center">
+      <nbp-tooltip-step
+              [hidden]="!_viewTooltip"
+              [nbpPosition]="'Top'"
+              [nbpTemplateDataStep]="tooltipData"
+              [nbpText]="'Hover For Right Tooltip'"
+              [nbpSize]="toolSize"
+              nbpVisibilityStrategy="load"
+              (stepGiveUp)="dismissHelp($event)">
+              <div>
+                <label class="example-text">Load tooltip Info </label>
+              </div>
+        </nbp-tooltip-step>
+  </div>
+</div> -->
+
+
+
+<nbp-footer [nbpLinks]="footerLinks" [nbpLanguages]="footerLanguages" [nbpLanguage]="initialLanguage" [nbpShowCentralBtn]="true"
+  [nbpCentralBtn]="footerCentralBtn" [nbpContrastEnable]="true" [nbpFontDimensionEnable]="true" (nbpContrast)="onContrastChange($event)"
+  (nbpLanguageChange)="onLanguageChange($event)" [nbpDisableMarginTop]="isMarginDisable()">
+</nbp-footer>

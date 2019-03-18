@@ -1,0 +1,53 @@
+<div class="wizard-container container">
+
+  <div class="row">
+
+    <div class="page-container col-md-16">
+
+        <ng-template #pageContainer></ng-template>
+
+    </div>
+
+    <div class="progress-container col-md-8">
+      
+      <ul class="wizard-progress">
+
+        <ng-container *ngFor="let step of steps; let stepIndex = index">
+
+          <li>
+
+            <div [ngClass]="{'wizard-node-todo':      step.state === States.ToDo,
+                             'wizard-node-active':    step.state === States.Active,
+                             'wizard-node-completed': step.state === States.Completed}"
+                class="wizard-node">
+            </div>
+
+            <p [ngClass]="{'wizard-text-todo':      step.state === States.ToDo,
+                           'wizard-text-active':    step.state === States.Active,
+                           'wizard-text-completed': step.state === States.Completed}"
+                class="wizard-text">
+              {{step.title + (stepIndex === currentStepIndex ? " - " + currentPage.title : "")}}
+            </p>
+            
+          </li>
+
+          <li>
+
+            <div *ngIf="stepIndex !== steps.length - 1"
+                [ngClass]="{'wizard-divider-todo':      step.state === States.ToDo,
+                            'wizard-divider-active':    step.state === States.Active,
+                            'wizard-divider-completed': step.state === States.Completed}"
+                class="wizard-divider">
+            </div>
+
+          </li>
+
+        </ng-container>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>

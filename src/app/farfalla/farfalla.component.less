@@ -1,0 +1,683 @@
+@import (less) './../../less/color.less';
+
+.isp-charts-container {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin: auto;
+	display: block;
+	background: @white;
+	//overflow: visible !important;
+
+	svg {
+		//overflow: visible !important;
+		margin: auto;
+		//display: block;
+
+	}
+}
+.chart-container{
+	display: block;
+	overflow: visible !important;
+}
+
+.chart-container-tachometer{
+	display: block;
+	overflow: visible !important;
+	max-width: 800px;
+}
+
+.chart-container-monitoring{
+	display: inline;
+	//max-width: 80%;
+}
+
+.chart-container-bar-comparison{
+	display: inline;
+}
+
+.chart-container-donut-comparison{
+	display: inline;
+}
+
+.chart-container-progress{
+	display: inline;
+}
+
+.chart-container-segments{
+	display: inline;
+}
+
+
+div.tooltip-tornado {
+    position: absolute;
+    text-align: center;
+    //display: inline;
+    //width: 60px;
+    height: 22px;
+    padding: 5px;
+    font: 12px Arial;
+    background: @dark_gray;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    color: @white;
+}
+
+div.tooltip-bar {
+    position: absolute;
+    text-align: center;
+    //display: inline;
+    //width: 60px;
+    height: 22px;
+    padding: 5px;
+    font: 12px Arial;
+    background: @dark_gray;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    color: @white;
+}
+
+
+.chart-container-tornado{
+	display: inline;
+	//overflow: hidden !important;
+	//max-width: 750px;
+
+
+
+}
+
+.chart-container-bar{
+	display: inline;
+	//overflow: scroll !important;
+	//max-width: 800px;
+}
+.labels {
+	text {
+	    font-size: 1.00em;
+			color: #323232;
+      font-weight: bold;;
+	}
+}
+.polylines {
+	line {
+		stroke: @light_gray;
+	}
+}
+.titles {
+	text {
+	    font-size: 0.875em;
+			color: #323232;
+
+	}
+}
+.subtitles {
+	text {
+	    font-size: 0.563em;
+			color: #323232;
+
+	}
+}
+.amount {
+	text {
+	    font-size: 1.000em;
+			color: #323232;
+
+	}
+}
+.graphTitle{
+	text {
+	    font-size: 0.688em;
+			color: #323232;
+
+	}
+}
+.buttonDetails{
+	text {
+	    font-size: 0.688em;
+			fill: #258900;
+	}
+}
+.linesValues {
+	text {
+	    font-size: 0.875em;
+			color: #323232;
+
+	}
+}
+
+.isp-legend-container {
+	max-width: 100%;
+	max-height: 100%;
+	margin: auto;
+	display: block;
+	background: @white;
+
+
+}
+.isp-charts-legend{
+	max-width: 95%;
+	margin: auto;
+	padding-bottom: 40px;
+	background: @white;
+
+
+}
+.separator{
+				border-bottom: 1px #ccc solid;
+			 overflow:visible;
+			 height:0px;
+}
+.rowTitle{
+	margin-bottom: 25px;
+
+	label {
+		max-width: 60%;
+		font-size: 0.875em;
+		color: #323232;
+		margin-bottom: 0px;
+		font-weight: normal;
+		padding-left: 10px;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		vertical-align: bottom;
+
+	}
+	&.values{
+			font-weight: bold;
+			float: right;
+		}
+	&.percent{
+			float: right;
+			min-width: 7%;
+			text-align: right;
+		}
+
+}
+.square {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+
+}
+
+//Tachometer Classes
+.titlesTachometer {
+	text {
+	    font-size: 1.125em;
+			color: #323232;
+			font-weight: normal;
+
+	}
+}
+.labelsTachometer {
+	text {
+	    font-size: 0.713em;
+			color: #323232;
+      font-weight: normal;;
+	}
+}
+
+.iconInfo {
+	text {
+	    font-size: 2.250em;
+			color: #323232;
+      font-weight: normal;
+	}
+}
+.titleLine {
+	text {
+	    font-size: 1.00em;
+			color: #323232;
+      font-weight: normal;
+	}
+}
+//Monitoring Classes
+.grid-x{
+	path{
+		stroke: none;
+    opacity: 1;
+	}
+	line{
+		stroke: lightgray;
+		stroke-width:2px;
+    opacity: 1;
+	}
+	text{
+		    text-anchor: middle;
+	}
+
+}
+.grid-x-year{
+	path{
+		stroke:none;
+    opacity: 1;
+	}
+	line{
+		stroke: black;
+    opacity: 1;
+	}
+	text{
+		text-anchor: middle;
+		font-weight: bold;
+	}
+
+}
+.grid-y{
+
+	line{
+		stroke: lightgrey;
+    opacity: 0.7;
+	}
+
+
+}
+
+.y{
+
+	line{
+		stroke: lightgrey;
+		stroke-width:2px;
+    opacity: 1;
+	}
+
+
+}
+.legendTitle{
+	text{
+				font-size: 0.875em;
+				fill: #323232;
+				font-weight: normal;
+		    text-anchor: middle;
+	}
+}
+.legendLabel{
+	text{
+				font-size: 0.625em;
+
+				font-weight: normal;
+				text-anchor: middle;
+
+	}
+	tspan{
+		fill: @gray;
+	}
+	line{
+		stroke-width: 2px;
+    opacity: 1;
+	}
+}
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+}
+
+.track {
+  stroke: #000;
+  stroke-opacity: 0.3;
+
+}
+
+.track-inset {
+  stroke: #ddd;
+  stroke-width: 6px;
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  cursor: pointer;
+}
+
+.handle {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.25px;
+}
+
+.tooltipCustom {
+	text {
+	    font-size: 0.625em;
+			color: #323232;
+      font-weight: bold;
+	}
+}
+
+.secondDetail {
+	margin-left: 20px;
+}
+
+//Media definition
+@media (max-width:992px) {
+
+	.labels {
+		text {
+				font-size: 0.875em;
+				color: #323232;
+				font-weight: bold;;
+		}
+	}
+	.titles {
+		text {
+		    font-size: 0.750em;
+				color: #323232;
+
+		}
+	}
+	.subtitles {
+		text {
+		    font-size: 0.500em;
+				color: #323232;
+
+		}
+	}
+	.amount {
+		text {
+		    font-size: 0.875em;
+				color: #323232;
+
+		}
+	}
+	.graphTitle{
+		text {
+		    font-size: 0.625em;
+				color: #323232;
+
+		}
+	}
+	.buttonDetails{
+		text {
+		    font-size: 0.625em;
+				fill: #258900;
+		}
+	}
+	.linesValues {
+		text {
+		    font-size: 0.750em;
+				color: #323232;
+		}
+	}
+}
+
+
+.linkFromJson a {
+	text-decoration:none;
+}
+
+.linkFromJson a.linkTitle :hover{
+	text-decoration:underline;
+}
+
+
+a.noLinkTitle {
+	text-decoration:none;
+}
+
+a.linkTitle {
+	cursor:pointer;
+}
+
+
+.contrasto-on {
+	text {
+		color: @black;
+	}
+	.chart-container-tachometer {
+		.slice {
+			path {
+				fill: @black;
+			}
+		}
+		.indicator {
+			path {
+				stroke: @white !important;
+				fill: @black;
+				&.sim {
+					fill: @white;
+					stroke: @black !important;
+					fill-opacity: 1 !important;
+				}
+			}
+		}
+		.labelsTachometer {
+			text {
+				color: @black;
+			}
+		}
+		.tooltipTachometer {
+			stroke: @white;
+			text {
+				stroke: none;
+			}
+		}
+		.bar {
+			rect {
+				fill: @white;
+				stroke: @black;
+			}
+		}
+		.indicatorScroll { 
+			path {
+				fill: @black;
+				stroke: @black;
+				stroke-width: 1;
+			}
+		}
+		.indicatorSimScroll {
+			path {
+				fill: @white;
+				stroke: @black !important;
+			}
+		}
+	}
+	.chart-container-segments {
+		.points {
+			line {
+				stroke: @black !important;
+			}
+			circle {
+				fill: @black !important;
+			}
+		}
+	}
+	.chart-container-tornado {
+		line {
+			stroke: @black;
+		}
+		rect {
+			stroke: @black;
+			fill: @white;
+		}
+		.titlesTornado {
+			text {
+				fill: @black;
+			}
+		}
+		.fullBarsTornado {
+			rect {
+				fill: @black;
+			}
+		}
+		.barsTornado {
+			path {
+				fill: @white;
+				stroke: @black;
+			}
+		}
+		.centralAxis {
+			stroke: @black;
+		}
+		.dettaglioButton {
+			rect {
+				fill: @black;
+				stroke: @black;
+			}
+			text {
+				fill:@white;
+			}
+		}
+		.percentsTornado {
+			text {
+				fill:@black;
+			}
+		}
+		.pageButtons {
+			circle {
+				fill:@black;
+				&.active {
+					fill:@white;
+					stroke:@black;
+				}
+				&:hover {
+					fill:@white;
+					stroke:@black;
+				}
+			}
+		}
+		.showAllButton, 
+		.showLessButton {
+			text {
+				fill: @black;
+			}
+		}
+	}
+	div.tooltip-tornado {
+		background: @white;
+		color: @black;
+		border: 1px solid @black;
+	}
+
+	.chart-container-monitoring {
+		.upLabels {
+			path {
+				stroke: @black;
+			}
+		}
+		.areaBelow {
+			path {
+				fill: @white;
+			}
+		}
+		.track-inset {
+			stroke: @black;
+		}
+		.series {
+			.line {
+				stroke: @black !important;
+			}
+		}
+		.y {
+			line {
+				stroke: @black;
+			}
+		}
+		.grid-y {
+			.tick {
+				line {
+					stroke: @black;
+				}
+			}
+		}
+		.tooltipCustom {
+			path {
+				stroke: @black;
+			}
+			rect {
+				fill: @black;
+			}
+		}
+		.slider {
+			line {
+				stroke-opacity: 1;
+			}
+		}
+		.legendTitle {
+			text {
+				fill: @black;
+			}
+		}
+		.legendLabel {
+			text {
+				tspan {
+					fill: @black;
+				}
+			}
+			line {
+				stroke: @black !important;
+			}
+		}
+	}
+	.chart-container-progress {
+		.emptyBarProgress {
+			rect {
+				stroke: @black;
+				fill: @white;
+			}
+		}
+		.fullBarProgress {
+			path {
+				fill: @black;
+			}
+		}
+		.fullBox {
+			path {
+				stroke: @black !important;
+				&.triangle {
+					fill: @black;
+				}
+			}
+		}
+	}
+	.chart-container-bar {
+		rect {
+			stroke: @black;
+		}
+		text {
+			fill: @black;
+		}
+		.bars {
+			path {
+				fill: @black;
+			}
+		}
+		.linesBar {
+			path {
+				stroke: @black;
+			}
+		}
+		.triangles {
+			path {
+				fill: @black;
+			}
+		}
+	}
+	.chart-container {
+		.slices, .container {
+			.fillArc {
+				fill: @black !important;
+			}
+		}
+		.linkTitle, .noLinkTitle {
+			text {
+				fill: @black !important;
+			}
+		}
+		.buttonDetails {
+			circle {
+				stroke: @black !important;
+			}
+			path {
+				stroke: @black;
+			}
+		}
+		.detailsContainer {
+			circle {
+				fill: @black !important;
+			}
+		}
+	}
+}

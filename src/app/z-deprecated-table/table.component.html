@@ -1,0 +1,168 @@
+<div style="text-align:center" class="jumbotron jumbotron-fluid container">
+  <div class="page-box-white mrg-t-20">
+    <div class="row">
+      <div class="col-md-24">
+
+        <div class="row">
+          <div class="col-md-12">
+            <label>Selection Method
+              <select [(ngModel)]="selectionMethod" (ngModelChange)="resetAll()">
+                <option *ngFor="let method of ['single' , 'multi' , 'none']" [ngValue]="method">{{method}}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="row col-md-24  mrg-t-20">
+          <nbp-table #arrayTable
+                     [nbpSelectionType]="selectionMethod"
+                     [nbpOptions]='gridOptions'
+                     [nbpDataSource]='gridDataSource'
+                     [nbpPreCheckedFn]='preCheckedFn'
+                     [nbpCheckboxDisabledFn]='checkboxDisabledFn'
+                     (nbpOnClickRow)='onClickRow($event)'
+                     (nbpOnSelectRow)='onRowActionEvent($event)'
+                     (nbpOnMultiSelectRow)='onRowsActionEvent($event)' >
+
+            <nbp-table-column
+              nbpId='IdColumn'
+              nbpTitle='ID'
+              nbpField='id'
+              [nbpSortable]='true'
+              [nbpFilter]='nbpPipe.DECIMAL'
+              nbpFilterArg='1.0'
+              [nbpVisible]='true'>
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='NameColumn'
+              nbpTitle='Name'
+              nbpField='name'
+              [nbpSortable]='false'
+              [nbpVisible]='true'>
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='uidColumn'
+              nbpTitle='Uid'
+              nbpField='accountInfo.uid'
+              [nbpSortable]='true'
+              [nbpVisible]='true'>
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='uidColumn'
+              nbpTitle='Last login'
+              [nbpFilter]='nbpPipe.DATE'
+              nbpFilterArg='dd-MM-yyyy'
+              nbpField='accountInfo.accountLastLogin'
+              [nbpSortable]='true'
+              [nbpVisible]='true'>
+            </nbp-table-column>
+
+          </nbp-table>
+        </div>
+
+        <div class="row col-md-24 mrg-t-15">
+
+          <div *ngIf="selectionMethod !== 'multi'">
+            <label>Selected Row Data</label>
+            <pre>{{eventData | json}}</pre>
+          </div>
+
+          <div *ngIf="selectionMethod === 'multi'">
+            <label>Array of MultiSelection data</label>
+            <pre>{{multiEventData | json}}</pre>
+            <label>Last Selected Row Data</label>
+            <pre>{{lastMultiEventData | json}}</pre>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-24">
+        <div class="row col-md-24">
+          <button (click)="bind()"> Search </button>
+        </div>
+        <div class="row col-md-24 mrg-t-20">
+
+          <nbp-table #httpTable
+                     [nbpOptions]='dynamicDataSourceToCall'
+                     [nbpDataSource]='gridDataSource'
+                     [nbpAutoBind]="false">
+
+            <nbp-table-column
+              nbpId='columnId1'
+              nbpTitle='Identification Number'
+              nbpField='id'
+              nbpSortable='false'
+              [nbpVisible]="false">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId2'
+              nbpTitle='Name'
+              nbpField='name'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId3'
+              nbpTitle='Surname'
+              nbpField='surname'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId4'
+              nbpTitle='Street'
+              nbpField='street'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId5'
+              nbpTitle='Account'
+              nbpField='accountInfo.accountLastLogin'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId6'
+              nbpTitle='Uid'
+              nbpField='accountInfo.uid'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId7'
+              nbpTitle='Password'
+              nbpField='accountInfo.password'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+            <nbp-table-column
+              nbpId='columnId8'
+              nbpTitle='Data'
+              nbpField='accountInfo.accountLastLogin'
+              nbpSortable='false'
+              [nbpVisible]="true">
+            </nbp-table-column>
+
+          </nbp-table>
+
+        </div>
+      </div>
+      <div class="row col-md-24  mrg-t-20">
+      </div>
+    </div>
+  </div>
+
+</div>
+<router-outlet></router-outlet>

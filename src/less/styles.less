@@ -1,0 +1,112 @@
+@import (css) "bootstrap.css";
+@import "color.less";
+@import "intesa-icons.less";
+@import "index.less";
+
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: @darkest_gray;
+}
+&:focus {
+	outline: none;
+}
+.overflow-hidden {
+	overflow: hidden;
+}
+.page-box-gray {
+	// background: @dark_white;
+	background: #eee;
+	padding: 1.250em 0.938em 1.250em 0.938em;
+	border-radius: 0.188em;
+	overflow: visible;
+}
+.page-box-white {
+	background: @white;
+	padding: 1.250em 0.938em 1.250em 0.938em;
+	border-radius: 0.188em;
+	overflow: hidden;
+}
+.row {
+	position: relative !important;
+}
+.container-fluid {
+	margin: 0 1.563em 0 1.563em !important;
+}
+.border-top-white {
+	border-top: 1px solid @white;
+}
+.pad-l-5 {
+	padding-left: 0.313em !important;
+}
+.pad-r-5 {
+	padding-right: 0.313em !important;
+}
+.pad-l-10 {
+	padding-left: 0.625em !important;
+}
+.pad-r-10 {
+	padding-right: 0.625em !important;
+}
+.pad-t-12 {
+	padding-top: 0.750em !important;
+}
+.pad-b-12 {
+	padding-bottom: 0.750em !important;
+}
+.mrg-0 {
+	margin: 0 !important;
+}
+.mrg-t-10 {
+	margin-top: 0.625em !important;
+}
+.mrg-t-15 {
+	margin-top: 0.938em !important;
+}
+.mrg-t-20 {
+	margin-top: 1.250em !important;
+}
+.mrg-t-35 {
+	margin-top: 2.188em !important;
+}
+.mrg-b-10 {
+	margin-bottom: 0.625em !important;
+}
+.mrg-b-15 {
+	margin-bottom: 0.938em !important;
+}
+.mrg-b-20 {
+	margin-bottom: 1.250em !important;
+}
+
+:host-context(.contrasto-on) {
+	.page-box-gray {
+		background: @white;
+		border-color: @black;
+	}
+
+	body {
+		color: @black;
+	}
+}
+
+.form-control {
+	-webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075) !important;
+	box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075) !important;
+}
+
+.nbp-global-disable {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+label:not(.nome-applicativo){
+  margin: 5px 5px 5px 10px !important;
+  font-size: .9375em !important;
+}

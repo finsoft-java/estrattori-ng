@@ -1,0 +1,30 @@
+<!-- <div class="table-container"> -->
+  <!-- <div class="flexbox-container" *ngFor="let rowData of dataInput; let i=index">
+    <div *ngFor="let columnData of rowData.cols; let col=index"
+         class="tr-column text-center" 
+         [ngClass]="{'info-text':_getTypeData(columnData)=='string'}"
+         [ngStyle]="{'width': ((100/rowData.cols.length)+ '%')}">
+      <div *ngIf="_getTypeData(columnData)==='string'" >
+        {{columnData}}
+      </div>
+      <div *ngIf="_getTypeData(columnData)!=='string'">
+        <app-tabelle-recoursive [dataInput]="columnData"></app-tabelle-recoursive>
+      </div>
+    </div>
+  </div> 
+ [ngStyle]="{'width': ((100/rowData.cols.length)+ '%')}"
+-->
+  <div class="flex-container" *ngFor="let rowData of dataInput; let i=index">
+      <div *ngFor="let columnData of rowData.cols; let col=index"
+         class="text-center"  [ngStyle]="{'width': '100%'}">
+      <div *ngIf="_getTypeData(columnData)==='string'" class="div-cont border-left-div">
+        {{columnData}}
+      </div>
+      <div *ngIf="_getTypeData(columnData)!=='string'">
+        <app-tabelle-recoursive [dataInput]="columnData"></app-tabelle-recoursive>
+      </div>
+    </div>
+  </div>
+       
+
+<!-- </div> -->

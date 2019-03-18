@@ -1,0 +1,75 @@
+p {
+    margin: 0 15px;
+    padding: 0;
+}
+.contenitoreTitolo {
+    height: 3.125em;
+    background-color: #F8F8F8;
+    margin: 1.25em;
+    margin-bottom: 0.3125em;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    text-align: center;
+    // font-size: 0px;
+}
+.titolo {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial;
+    font-weight: 400;
+    font-size: 0.875em;
+    color: #323232;
+    
+}
+.contenitoreCelle {
+    margin: 0px;
+    // font-size: 0px;
+    margin: 1.25em;
+    margin-top: 0.3125em;
+    margin-bottom: 0.9375em;
+}
+.cella {
+    background-color: #FFFFFF;
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 0.875em;
+    margin:0.46%;
+    // margin: 5px;
+    color: #323232;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+.firstCella {
+    margin-left: 0;
+}
+.lastCella {
+    margin-right: 0;
+}
+
+.container-grid {
+    background-color:#EEEEEE;
+}
+
+:host-context(.contrasto-on) {
+    
+    .contenitoreTitolo {
+        background-color: #FFFFFF;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+    }
+    .titolo {
+        color: #323232;
+        
+    }
+    .cella {
+        background-color: #FFFFFF;
+    }
+    .container-grid {
+        background-color: #000000;
+    }
+}

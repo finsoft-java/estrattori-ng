@@ -1,0 +1,44 @@
+<div class="table-container header-col" [ngClass]="{ 'table-scrollbar-auto': tableScrollbarAuto, 'table-scrollbar-scroll': tableScrollbarScroll, 'tab-grid':tabGrid, 'tab-row':tabRow, 'tab-col':tabCol }">
+  <table>
+
+    <!-- testata tabella -->
+    <thead>
+      <th *ngFor="let field of fieldsTable; let i=index" class="table-label" [ngStyle]="colonneMock[0][field].style?_tableUtilService.strToJson(colonneMock[0][field].style):''">
+        {{colonneMock[0][field].value}}
+        <div class="sort-button" (click)="sortBy(true, field)">
+          <div class="arrow-down" [ngClass]="{'active': sorterBE.isCurrentSorting(field, false)}"></div>
+          <div class="arrow-up" [ngClass]="{'active': sorterBE.isCurrentSorting(field, true)}"></div>
+        </div>
+      </th>
+    </thead>
+    <!-- body tabella -->
+    <tbody *ngFor="let data of datiTabBE; let i=index">
+      <tr class="table-row" *ngIf="(currentPageNumber-1)*5 <= i && i < currentPageNumber * 5">
+        <td *ngFor="let field of fieldsTable; let i=index" class="table-cell text-center selection-cell" [ngStyle]="data[field].style?_tableUtilService.strToJson(data[field].style):''">
+
+          <span *ngIf="data[field].type == 'icon'">
+            <img *ngIf="data[field].value" src="{{data[field].value}}" style="height:35px; width:35px">
+          </span>
+          <span *ngIf="data[field].type == 'iconintesa'">
+            <span class="icon {{data[field].value}}" style="font-size:35px;width:35px; color:green; font-weight:bold"></span>
+            <span class="icon hover {{data[field].subValue}}" style="font-size:35px;width:35px; color:green; font-weight:bold"></span>
+          </span>
+          <span *ngIf="data[field].type == 'date'">
+            {{ data[field].value | date: 'dd.MM.yyyy'}}
+          </span>
+          <span *ngIf="data[field].type.trim() == ''">
+            {{ data[field].value}}
+          </span>
+
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<pagination [nbpPaginationStatus]="_tableUtilService.currentPageStatus" (nbpOnFirst)="_onFirstPage($event)" (nbpOnLast)="_onLastPage($event)"
+  (nbpOnNext)="_onNextPage($event)" (nbpOnGoToPage)="_onGoToPage($event)" (nbpOnPrev)="_onPrevPage($event)" (nbpOnPageChange)="_onPageChange()">
+</pagination>
+
+<!-- <div><button (click)="minorDati()">pippo</button></div> -->

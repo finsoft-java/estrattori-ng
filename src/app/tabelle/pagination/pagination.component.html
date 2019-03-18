@@ -1,0 +1,54 @@
+<div class="pagination-container">
+    <div class="row">
+
+        <div class="col-md-5 col-sm-5 col-xs-5" [ngClass]="{'elementoOpaco': nbpDisablePaginationStatus.prev }">
+            <button id="firstButton" class="table-page-btn pull-left" type="button" (click)="onFirst()" *ngIf="nbpShowPaginationStatus.first"
+                [disabled]="nbpDisablePaginationStatus.first">
+                <span class="page-btn-arrow icomoon-Simboli_freccia_sinistra"></span>
+                <span class="page-btn-text">PRIMO</span>
+            </button>
+        </div>
+
+        <div class="col-md-14 col-sm-14 col-xs-14" style="text-align:center">
+
+            <button style="margin-right: 30px" id="prevButton" class="table-page-btn" type="button" (click)="onPrev()" *ngIf="nbpShowPaginationStatus.prev"
+                [disabled]="nbpDisablePaginationStatus.prev" [ngClass]="{'elementoOpaco': nbpDisablePaginationStatus.prev }">
+                <span class="page-btn-arrow icomoon-Simboli_Risorsa-12"></span>
+            </button>
+
+            <ng-container *ngIf="_isTotalRecordsProvided() && nbpShowPaginationStatus.page">
+
+                <button id="windowPrevButton" *ngIf="_isPrevPageWindowButtonVisible()" [disabled]="nbpDisablePaginationStatus.page" class="table-page-btn"
+                    type="button" (click)="onGoToPage(_paginationActions.ON_WINDOW_PREV_CLICK)"> <div class="table-page-number"><span class="points-click">...</span></div> </button>
+
+                <ng-container *ngFor="let page of _windowPages; let i = index">
+                    <button id="windowPageButton" class="table-page-btn" type="button" [disabled]="nbpDisablePaginationStatus.page" (click)="onGoToPage(_paginationActions.ON_PAGE_CLICK, page.model)">
+                        <span class="table-page-number" [ngClass]="{'active': nbpPaginationStatus && page.model === _internalPageNumber}" [attr.tooltip]="_evaluateTooltipText(page.view)">{{page.view}}</span>
+                    </button>
+                </ng-container>
+
+                <button id="windowNextButton" *ngIf="_isNextPageWindowButtonVisible()" [disabled]="nbpDisablePaginationStatus.page" class="table-page-btn"
+                    type="button" (click)="onGoToPage(_paginationActions.ON_WINDOW_NEXT_CLICK)"> <div class="table-page-number"><span class="points-click">...</span></div> </button>
+            </ng-container>
+
+            <button *ngIf="!_isTotalRecordsProvided() && nbpShowPaginationStatus.page" class="table-page-btn" type="button">
+                <span class="table-page-number active" [attr.tooltip]="_evaluateTooltipText(nbpPaginationStatus.pageNumber)">{{nbpPaginationStatus.pageNumber}}</span>
+            </button>
+
+            <button style="margin-left: 30px" id="nextButton" class="table-page-btn" type="button" (click)="onNext()" *ngIf="nbpShowPaginationStatus.next"
+                [disabled]="nbpDisablePaginationStatus.next"  [ngClass]="{'elementoOpaco': nbpDisablePaginationStatus.next }">
+                <span class="page-btn-arrow icomoon-Simboli_Risorsa-13"></span>
+            </button>
+
+        </div>
+
+        <div class="col-md-5 col-sm-5 col-xs-5" [ngClass]="{'elementoOpaco': nbpDisablePaginationStatus.next }">
+            <button id="lastButton" class="table-page-btn pull-right" *ngIf="_isTotalRecordsProvided() && nbpShowPaginationStatus.last"
+                (click)="onLast()" [disabled]="nbpDisablePaginationStatus.last">
+                <span class="page-btn-text">ULTIMO</span>
+                <span class="page-btn-arrow icomoon-Simboli_freccia_destra"></span>
+            </button>
+        </div>
+
+    </div>
+</div>

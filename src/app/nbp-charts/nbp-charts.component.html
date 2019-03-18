@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-xs-offset-6">
+
+      <nbp-ring-chart 
+        [nbpData]="nbpData" 
+        nbpSelectionLabel="DETTAGLI"
+        [testTrigger]="nbpData.barGroups[0].bars[0].value + nbpData.barGroups[1].bars[0].value + nbpData.barGroups[1].bars[1].value"
+        (nbpOnSelection)="isModalOpen = true">
+      
+      </nbp-ring-chart>
+    </div>
+  </div>
+</div>
+
+<nbp-modal #detailModal nbpTitle='Dettagli' nbpSubTitle='Maggiori Dettagli' [(nbpOpened)]='isModalOpen'>
+    <div class="container">
+  Frase Descrittiva ricevuta dal server...
+  <div class="row">
+    <div class="col-md-10">
+      <nbp-ring-chart [nbpData]="nbpData">
+      </nbp-ring-chart>
+    </div>
+    <div class="col-md-10">
+      <nbp-bar-chart [nbpData]="nbpData">
+      </nbp-bar-chart>
+      <nbp-bar-chart [nbpData]="nbpData">
+      </nbp-bar-chart>
+      <nbp-bar-chart [nbpData]="nbpData">
+      </nbp-bar-chart>
+    </div>
+  </div>
+</div>
+</nbp-modal>
+

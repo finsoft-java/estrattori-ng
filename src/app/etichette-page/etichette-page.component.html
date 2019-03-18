@@ -1,0 +1,46 @@
+<div style="text-align:center; background-color: #F2F2F2; border-radius: 5px; margin-top: 1.250em; min-height: 100%" class="container">
+
+  <nbp-dividing-line [nbpLineStyle]="secondary" nbpTitle="Etichette per funzione filtro (gruppo)"></nbp-dividing-line>
+  <div class="row" style="margin-top: 30px; margin-bottom: 30px">
+      <div class="col-md-12 col-md-offset-6 text-center">
+          <nbp-etichetta-check *ngFor="let buttonKey of buttonList;let i = index"
+                               style="float:left; padding-right: 1em"
+                               [(ngModel)]="resultCheckButton[i]"
+                               [key]="buttonKey"
+                               (removeButtonEvt)="deleteChoise(buttonKey)"
+                               (change)="detectChange($event,buttonKey)"
+                               trueValue="{{buttonKey}}"></nbp-etichetta-check>
+      </div>
+  </div>
+
+  <nbp-dividing-line [nbpLineStyle]="secondary" nbpTitle="Etichette per funzione filtro (singolo)"></nbp-dividing-line>
+  <div class="row" style="margin-top: 30px; margin-bottom: 30px">
+      <div class="col-md-2 col-md-offset-6">
+          <div class="label-filtri">Prodotto:</div>
+      </div>
+      <div class="col-md-8">
+              <div *ngFor="let key of resultCheckButton2|notEmptyArray ;let idx = index" style="float: left">
+                  <nbp-etichetta-filtro [key]="key"
+                                        (removeFilterEvt)="deleteFilter(key)"></nbp-etichetta-filtro>
+              </div>
+      </div>
+  </div>
+
+  <nbp-dividing-line [nbpLineStyle]="secondary" nbpTitle="Scelta mercato investimenti"></nbp-dividing-line>
+  <div class="row" style="margin-top: 30px; margin-bottom: 30px">
+      <div class="col-md-12 col-md-offset-6">
+          <nbp-sel-mercato  *ngFor="let merc of listaMercati ;let idx = index"
+              [key]="merc.mercato" [iconIn]="merc.icon" [(ngModel)]="merc.select">
+          </nbp-sel-mercato>
+      </div>
+  </div>
+
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-12 col-md-offset-6" style="padding-bottom: 2em">
+      <nbp-button [nbpLabel]="'Reset Filter' | translate"
+                  [nbpStyle]="primary"
+                  (nbpClick)="resetFilter($event)"></nbp-button>
+    </div>
+  </div>
+
+</div>

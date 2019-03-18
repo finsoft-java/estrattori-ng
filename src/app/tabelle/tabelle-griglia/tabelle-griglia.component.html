@@ -1,0 +1,24 @@
+<div class="row container-grid" [style.max-width.px]="widthTabella">
+
+  <div class="contenitoreTitolo" [style.max-width.px]="widthTitolo" >
+    <div class="titolo">
+      {{gridTable.title}}
+    </div>
+  </div>
+
+  <div class="contenitoreCelle">
+    <div *ngFor="let row of gridTable.data">
+      <div *ngFor="let item of row; let first = first; let last = last" 
+           class="cella"
+           [ngClass]="{ 'firstCella' : first,'lastCella' : last }"
+           [style.width.%]="widthCol"
+           >
+        <p>{{item.description}}</p>
+        <p>
+          <b>{{item.value}}</b>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>

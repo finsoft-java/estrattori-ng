@@ -1,0 +1,90 @@
+@import (less) "./../../../less/color.less";
+
+.table-container {
+    display: table;
+    width: 100%;
+}
+.tr-column{
+    float: left; 
+    color: @gray;
+    min-height: 50px;
+    border: 0.0625em solid @light_gray;
+    background-color: @lightest_gray;
+    
+}
+.info-text {
+    // border: 0.0625em solid @light_gray;
+    font-size: 12px;
+    vertical-align: middle;
+}
+.flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+    -webkit-flex-direction:row;
+    -moz-flex-direction:row;
+    -ms-flex-direction:row;
+    flex-direction:row;
+    
+    -webkit-flex-wrap:row nowrap;
+    -moz-flex-wrap:row nowrap;
+    -ms-flex-wrap:row nowrap;
+    flex-wrap:row nowrap;  
+    width: 100%;
+    .div-cont{
+         /* This is the code responsible for the centering of content */
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
+        -webkit-flex-pack:center;
+        -webkit-justify-content:center;
+        -moz-justify-content:center;
+        -ms-flex-pack:center;
+        justify-content:center;
+
+        -webkit-flex-line-pack:center;
+        -ms-flex-line-pack:center;
+        -webkit-align-content:center;
+        align-content:center;
+
+        -webkit-flex-direction:column;
+        -moz-flex-direction:column;
+        -ms-flex-direction:column;
+        flex-direction:column;
+
+        text-align: center;
+
+        background-color: @lightest_gray;
+        font-size:12px;
+        min-height: 50px;
+       
+        margin: auto;  /* Magic! */
+        padding:10px;
+        text-align: left;
+        &.border-left-div{
+            border-left: 0.0625em solid @light_gray;
+        }
+        &.border-left-div{
+            border-right: 0.0625em solid @light_gray;
+        }
+        &.border-left-div{
+            border-top: 0.0625em solid @light_gray;
+        }
+        &.border-left-div{
+            border-bottom: 0.0625em solid @light_gray;
+        }
+    }
+   
+   
+    // background-color: DodgerBlue;
+  }
+//   .border-left-div{
+//     border-left: 0.0625em solid @light_gray;
+// }
+  

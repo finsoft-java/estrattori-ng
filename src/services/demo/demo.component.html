@@ -1,0 +1,191 @@
+<div class="page-box-gray">
+
+  <!-- Scelta dell'ambiente -->
+
+  <div class="row">
+    <!--<isp-separator label="-->AMBIENTE<!--"></isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <!-- Locale -->
+    <nbp-radio class="col-sm-4 col-sm-offset-2" nbpLabel="Local" [(ngModel)]="ambiente" name="ambiente" value="0" required></nbp-radio>
+    
+    <!-- Application -->
+    <nbp-radio class="col-sm-4" nbpLabel="Application" [(ngModel)]="ambiente" name="ambiente" value="1" required></nbp-radio>
+    
+    <!-- Custom -->
+    <nbp-radio class="col-sm-4" nbpLabel="Custom" [(ngModel)]="ambiente" name="ambiente" value="2" required></nbp-radio>
+    <nbp-input-text class="col-sm-6" [name]="ambienteCustom" [(ngModel)]="ambienteCustom" placeholder="Es. http://localhost:7001/pocfrontend" [disabled]="isCustomEnvironmentDisabled()" required></nbp-input-text>  
+  
+  </div>
+  
+
+  <!-- Servizio -->
+
+  <div class="row">
+      <!--<isp-separator label="-->SERVIZIO<!--'"> </isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-9 col-sm-offset-2">
+      <nbp-combo [nbpDataSource]="endpoints" nbpViewField="name" name="selectedEndpoint" [(ngModel)]="selectedEndpoint" placeholder="Inserisci l'Endpoint" (ngModelChange)="onEndpointChange($event)"></nbp-combo>
+    </div>
+
+    <div class="col-sm-9">
+      <span>
+        Descrizione: {{selectedEndpoint.description}}
+      </span>
+    </div>
+
+  </div>
+
+
+  <!-- Body della request -->
+
+  <div class="row">
+    <!--<isp-separator label="'-->BODY<!--'"> </isp-separator>-->
+  </div>
+    
+	<div class="row">
+
+    <!-- Automatico -->
+    <nbp-radio class="col-sm-4 col-sm-offset-2" nbpLabel="Automatico" [(ngModel)]="requestType" name="requestType" value="0" required></nbp-radio>
+    
+    <!-- Custom -->
+    <nbp-radio class="col-sm-4" nbpLabel="Custom" [(ngModel)]="requestType" name="requestType" value="1" required></nbp-radio>
+    <nbp-input-text class="col-sm-6" [name]="ambienteCustom" [(ngModel)]="bodyCustom" placeholder="Inserisci il JSON" [disabled]="isCustomBodyDisabled()" required></nbp-input-text>  
+
+  </div>
+
+
+  <!-- Header della request -->
+
+  <div class="row">
+    <!--<isp-separator label="'-->HEADER<!--'"> </isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <!-- Default -->
+    <nbp-radio class="col-sm-4 col-sm-offset-2" nbpLabel="Default" [(ngModel)]="headerType" name="headerType" value="0" required></nbp-radio>
+    
+    <!-- Custom -->
+    <nbp-radio class="col-sm-4" nbpLabel="Custom" [(ngModel)]="headerType" name="headerType" value="1" required></nbp-radio>
+  
+  </div>
+
+
+  <!-- Opzioni header custom -->
+
+  <div class="row">
+    <!--<isp-separator label="-->OPERATOR INFO<!--'"> </isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <nbp-input-text class="col-sm-6" [name]="userIDFE" [(ngModel)]="headerSelected.userIDFE" placeholder="Inserisci userID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>  
+    
+    <nbp-input-text class="col-sm-6" [name]="notISPUserID" [(ngModel)]="headerSelected.notISPUserID" placeholder="Inserisci NotISPUserID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+  </div>
+
+
+  <div class="row">
+    <!--<isp-separator label="-->REQUEST INFO<!--'"> </isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <nbp-input-text class="col-sm-6" [name]="language" [(ngModel)]="headerSelected.language" placeholder="Inserisci language" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="serviceID" [(ngModel)]="headerSelected.serviceID" placeholder="Inserisci serviceID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="serviceVersion" [(ngModel)]="headerSelected.serviceVersion" placeholder="Inserisci serviceVersion" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="transactionID" [(ngModel)]="headerSelected.transactionID" placeholder="Inserisci transactionID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+  </div>
+
+  <div class="row">
+    <!--<isp-separator label="-->COMPANY INFO<!--'"> </isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <nbp-input-text class="col-sm-6" [name]="ISPBranchCode" [(ngModel)]="headerSelected.ISPBranchCode" placeholder="Inserisci ISPBranchCode" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="ISPCallerCompanyIDCode" [(ngModel)]="headerSelected.ISPCallerCompanyIDCode" placeholder="Inserisci ISPCallerCompanyIDCode" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="notISPCompanyIDCode" [(ngModel)]="headerSelected.notISPCompanyIDCode" placeholder="Inserisci notISPCompanyIDCode" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="ISPServiceCompanyIDCode" [(ngModel)]="headerSelected.ISPServiceCompanyIDCode" placeholder="Inserisci ISPServiceCompanyIDCode" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+  </div>
+
+  <div class="row">
+    <!--<isp-separator label="-->TECHNICAL INFO<!--'"> </isp-separator>-->
+  </div>
+
+  <div class="row">
+
+    <nbp-input-text class="col-sm-6" [name]="applicationID" [(ngModel)]="headerSelected.applicationID" placeholder="Inserisci applicationID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="callerServerName" [(ngModel)]="headerSelected.callerServerName" placeholder="Inserisci callerServerName" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="channelIDCode" [(ngModel)]="headerSelected.channelIDCode" placeholder="Inserisci channelIDCode" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="callerProgramName" [(ngModel)]="headerSelected.callerProgramName" placeholder="Inserisci callerProgramName" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+  </div>
+
+  <div class="row">
+    <!--<isp-separator label="-->BUSINESS INFO<!--'"> </isp-separator>-->
+  </div>
+  
+  <div class="row">
+
+    <nbp-input-text class="col-sm-6" [name]="businessFileID" [(ngModel)]="headerSelected.businessFileID" placeholder="Inserisci businessFileID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="businessOperation" [(ngModel)]="headerSelected.businessOperation" placeholder="Inserisci businessOperation" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="businessProcessID" [(ngModel)]="headerSelected.businessProcessID" placeholder="Inserisci businessProcessID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="businessProcessName" [(ngModel)]="headerSelected.businessProcessName" placeholder="Inserisci businessProcessName" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+    <nbp-input-text class="col-sm-6" [name]="customerID" [(ngModel)]="headerSelected.customerID" placeholder="Inserisci customerID" [disabled]="isCustomHeaderDisabled()" required></nbp-input-text>
+
+  </div>
+
+
+  <!-- Invio e input/output -->
+
+  <div class="row mrg-b-15 text-right">
+
+    <nbp-button class="col-sm-20 col-sm-offset-2" nbpLabel="Send request" (click)="onSendRequest()" [disabled]="isSendRequestDisabled()"></nbp-button>
+
+  </div>
+  
+  <div class="row mrg-b-15">
+
+    <nbp-label class="col-sm-20 col-sm-offset-2" nbpText="Server request:"></nbp-label>
+    <div class="col-sm-20 col-sm-offset-2" style="word-wrap: break-word;" [textContent]="getRequest()"></div>
+
+  </div>
+
+  <div class="row mrg-b-15" ng-if="headerRequest != null">
+
+    <nbp-label class="col-sm-20 col-sm-offset-2" nbpText="Header:"></nbp-label>
+    <div class="col-sm-20 col-sm-offset-2" style="word-wrap: break-word;" [textContent]="getRequestHeader()"></div>
+
+  </div>
+
+  <div class="row mrg-b-15">
+
+    <nbp-label class="col-sm-20 col-sm-offset-2" nbpText="Server response:"></nbp-label>
+    <div class="col-sm-20 col-sm-offset-2" style="word-wrap: break-word;" [textContent]="getResponse()"></div>
+
+  </div>
+
+</div>

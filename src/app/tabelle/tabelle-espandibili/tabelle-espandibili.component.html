@@ -1,0 +1,121 @@
+<div class="table-container header-col" [ngClass]="{ 'table-scrollbar-auto': tableScrollbarAuto, 'table-scrollbar-scroll': tableScrollbarScroll,'tab-grid':tabGrid, 'tab-row':tabRow, 'tab-col':tabCol  }">
+
+  <table>
+
+    <!-- testata tabella -->
+    <thead>
+      <th *ngFor="let field of fieldsTable[0]" class="table-label" [ngStyle]="headingTable[0][field].style?_tableUtilService.strToJson(headingTable[0][field].style):''">
+        {{headingTable[0][field].value}}
+      </th>
+      <th style="width: 46px" class="table-label">
+      </th>
+    </thead>
+
+    <!-- body tabella -->
+    <tbody *ngFor="let data of dataTable; let i=index">
+
+      <!-- Riga 0-->
+      <tr class="table-row" *ngIf="(currentPageNumber-1)*4 <= i && i < currentPageNumber * 4">
+
+        <td *ngFor="let field of fieldsTable[0]; let i=index" class="table-cell text-center selection-cell" [ngStyle]="data[field].style?_tableUtilService.strToJson(data[field].style):''">
+
+          <span *ngIf="data[field].type == 'icon'">
+            <img *ngIf="data[field].value" src="{{data[field].value}}" style="height:35px; width:35px">
+          </span>
+          <span *ngIf="data[field].type == 'iconintesa'">
+            <span class="icon {{data[field].value}}" style="font-size:35px; width:35px;color:green; font-weight:bold"></span>
+            <span class="icon hover {{data[field].subValue}}" style="font-size:35px;width:35px; color:green; font-weight:bold"></span>
+          </span>
+          <span *ngIf="data[field].type == 'date'">
+            {{ data[field].value | date: 'dd/MM/yyyy'}}
+          </span>
+          <span *ngIf="data[field].type.trim() == ''">
+            {{ data[field].value}}
+          </span>
+
+        </td>
+        <td (click)="toggle[i] = !toggle[i]" class="table-cell text-center selection-cell">
+          <i *ngIf="!toggle[i]" class="icon ico-comuni-freccia-accordion-apri pull-right pointer" style="font-size: 23px !important;"></i>
+          <i *ngIf="toggle[i]" class="icon ico-comuni-freccia-accordion-chiudi pull-right pointer" style="font-size: 23px !important;"></i>
+        </td>
+      </tr>
+
+      <!-- Riga 1 -->
+      <tr class="table-row panelrow" *ngIf="toggle[i]" class="rowAccordion" >
+        <td colspan="100%" class="rowAccordion">
+
+          <ng-container *ngIf="customRowsTable[i]">
+            <ng-container [ngSwitch]="customRowsTable[i].template">
+              <ng-container *ngSwitchCase="'template0'">
+                <ng-container *ngTemplateOutlet="template0; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template1'">
+                <ng-container *ngTemplateOutlet="template1; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template2'">
+                <ng-container *ngTemplateOutlet="template2; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template3'">
+                <ng-container *ngTemplateOutlet="template3; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template4'">
+                <ng-container *ngTemplateOutlet="template4; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template5'">
+                <ng-container *ngTemplateOutlet="template5; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template6'">
+                <ng-container *ngTemplateOutlet="template6; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template7'">
+                <ng-container *ngTemplateOutlet="template7; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template8'">
+                <ng-container *ngTemplateOutlet="template8; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchCase="'template9'">
+                <ng-container *ngTemplateOutlet="template9; context: { $implicit: customRowsTable[i] }">
+                </ng-container>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <td *ngFor="let field of fieldsTable[1]; let i=index" class="table-cell text-center selection-cell" [ngStyle]="data[field].style?_tableUtilService.strToJson(data[field].style):''">
+                  <span *ngIf="data[field].type == 'icon'">
+                    <img *ngIf="data[field].value" src="{{data[field].value}}" style="height:35px; width:35px">
+                  </span>
+                  <span *ngIf="data[field].type == 'iconintesa'">
+                    <span class="icon {{data[field].value}}" style="font-size:35px;color:green; font-weight:bold"></span>
+                  </span>
+                  <span *ngIf="data[field].type == 'date'">
+                    {{ data[field].value | date: 'dd-MM-yyyy'}}
+                  </span>
+                  <span *ngIf="data[field].type.trim() == ''">
+                    {{ data[field].value}}
+                  </span>
+                </td>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<!-- paginatore -->
+<pagination [nbpPaginationStatus]="_tableUtilService.currentPageStatus" (nbpOnFirst)="_onFirstPage($event)" (nbpOnLast)="_onLastPage($event)"
+  (nbpOnNext)="_onNextPage($event)" (nbpOnGoToPage)="_onGoToPage($event)" (nbpOnPrev)="_onPrevPage($event)" (nbpOnPageChange)="_onPageChange()"></pagination>
+<div>

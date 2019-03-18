@@ -1,0 +1,12 @@
+<div style="text-align:center; background-color: #F2F2F2; border-radius: 5px; margin-top: 1.250em; min-height: 100%" class="container">
+
+  <nbp-dividing-line [nbpLineStyle]="secondary" nbpTitle="Componente di ricerca"></nbp-dividing-line>
+
+  <div class="row" style="margin-bottom:300px; text-align: center">
+    <div class="col-md-24">
+      <nbp-search-box (search)="startSearch($event)" (change)="buildResult($event)" [nbpResults]="results" nbpSearchButtonText="Cerca"
+                      [nbpPlaceholder]="'Cerca'" (showMoreResults)="showMore()">
+      </nbp-search-box>
+    </div>
+  </div>
+</div>

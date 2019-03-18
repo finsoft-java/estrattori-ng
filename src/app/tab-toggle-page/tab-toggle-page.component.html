@@ -1,0 +1,39 @@
+<!-- <div class="container main-container" style="margin-top: 1.250em; min-height: 100%">
+  <app-tab-toggle style="margin:0" [nbpItems]='items' [nbpSelectedIndex]='index' (nbpSelectedIndexChange)='onTabChange($event)'>
+  </app-tab-toggle>
+
+  <div>
+    <div *ngIf="index == 0" style="background-color:rgba(253, 154, 154, 0.445); min-height:500px">
+      Selezionato il tab con indice 0
+    </div>
+    <div *ngIf="index == 1" style="background-color:rgb(243, 243, 166); min-height:500px">
+      Selezionato il tab con indice 1
+    </div>
+    <div *ngIf="index == 2" style="background-color:rgb(192, 248, 192); min-height:500px">
+      Selezionato il tab con indice 2
+    </div>
+  </div>
+
+</div> -->
+
+<div class="container main-container" style="margin-top: 1.250em; min-height: 100%">
+
+  <div>
+
+    <nbp-toggle-tabset>
+      <nbp-toggle-tab disabled="true" title="Scheda 0">
+        Hai scelto la scheda 0
+      </nbp-toggle-tab>
+      <nbp-toggle-tab active="true" title="Scheda 1">
+        Hai scelto la scheda 1
+      </nbp-toggle-tab>
+      <nbp-toggle-tab title="Scheda 2">
+        Hai scelto la scheda 2
+      </nbp-toggle-tab>
+      <nbp-toggle-tab title="Scheda 3">
+        Hai scelto la scheda 3
+      </nbp-toggle-tab>
+    </nbp-toggle-tabset>
+  </div>
+
+</div>

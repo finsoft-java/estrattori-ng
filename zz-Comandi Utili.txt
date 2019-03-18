@@ -1,0 +1,20 @@
+x installare in directory aaa
+
+compilare con
+ng build  --prod  --base-href /aaa/
+
+in angular-cli.json modificare
+"outDir": "dist/aaa/",
+
+Le icone saranno correttamente visualizzate in --prod.
+Bisogna fargliele visualizzare in JIT : da implementare
+
+DOCUMENTAZIONE
+
+Nella libreria loro usare
+compodoc -p src\lib\tsconfig.json -d docs src\lib --assetsFolder documentation-assets --extTheme documentation-assets\nbp-style
+oppure
+compodoc -p src/lib/tsconfig.json -d docs src/lib --disableSourceCode --disablePrivateOrInternalSupport -a documentation-assets -y documentation-assets/nbp-style/ --includes changelog/ --includesName CHANGELOG
+
+Nella nostra è piu semplice
+compodoc -p tsconfig.json

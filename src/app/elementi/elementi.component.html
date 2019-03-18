@@ -1,0 +1,441 @@
+<div style="text-align:center; background-color: #F2F2F2; border-radius: 5px; margin-top: 1.250em; min-height: 100%" class="container">
+  <!-- RADIO BUTTON VALIDATION----------------------------------- -->
+
+  <!-- <nbp-dividing-line [nbpLineStyle]="primary" nbpTitle="Esempio di validazione multipla su Codice Custom">
+  </nbp-dividing-line>
+
+  <fidd0-questionario-question *ngFor="let domanda of domande" [domanda]="domanda" [options]="domanda.options"></fidd0-questionario-question>
+
+  <div class="pull-left" style="margin-top: 30px; font-weight: bold">Tutte le scelte obbligatorie sono state fatte: {{checkScelte(domande)}}</div>
+  <br> -->
+  <form style="margin-top: 50px">
+
+    <!-- INPUT ----------------------------------- -->
+    <nbp-dividing-line [nbpLineStyle]="primary" nbpTitle="Input">
+    </nbp-dividing-line>
+
+    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Number'">
+          <nbp-input-text [pattern]="'[0-9]{2,6}'" [maxlength]="6" name="componentName_0" [(ngModel)]="firstName" required placeholder="Inserisci numero"
+            firstFocus="true" [tabindex]="1" nbpShowValidation=true>
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Precompilato'">
+          <nbp-input-text name="componentName_1" [(ngModel)]="firstName2" nbpHighlightedDefault placeholder="Inserisci nome" nbpShowValidation=true>
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Password'">
+          <nbp-input-text name="componentName_2" [(ngModel)]="password" placeholder="Inserisci password" nbpInputType="password" [tabindex]="3">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+    </div>
+    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Importo'">
+          <nbp-input-text [nbpFormat]="'currency'" name="componentName_3" [(ngModel)]="importo" placeholder="Inserisci importo">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Disabilitato'">
+          <nbp-input-text disabled name="componentName_0" [(ngModel)]="importo2" placeholder="Inserisci importo">
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Testo'">
+          <nbp-input-text [maxlength]="2" name="componentName_10" [(ngModel)]="firstNameString" required placeholder="Inserisci nome"
+            [tabindex]="2" nbpShowValidation=true>
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input con validatori custom'">
+          <nbp-input-text name="componentName_11" [(ngModel)]="exampleString"
+                          appForbiddenNameSync
+                          appForbiddenName
+                          [nbpErrorMessage]="'input non valido'"
+                          placeholder="Inserisci testo diverso da 'test'"
+                          nbpShowValidation=true>
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+
+    </div>
+
+    <!-- COMBO ----------------------------------- -->
+    <nbp-dividing-line nbpTitle="Combo">
+    </nbp-dividing-line>
+
+    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+      <div class="col col-md-24">
+        <app-contenitore-combo>
+        </app-contenitore-combo>
+      </div>
+    </div>
+
+    <!-- DATE NORMALI, SENZA I PULSANTI ANNUALI --------------------------- -->
+    <!-- <nbp-dividing-line nbpTitle="Datepicker">
+    </nbp-dividing-line>
+
+    <div class="row">
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Data 1'">
+
+          <nbp-datepicker name="datePicker_1" [(ngModel)]="currentDate1" (ngModelChange)="changeModel1($event)" required validateDate
+            nbpShowValidation=true>
+          </nbp-datepicker>
+
+        </nbp-input-container>
+        <nbp-button [nbpLabel]="'Cancella Data'" [nbpStyle]="secondary" (nbpClick)="cancellaData1()"></nbp-button>
+      </div>
+
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Data 1 - Disabilitata'">
+          <nbp-datepicker name='datePicker_12' [pattern]="'([0-9][0-9])[.]{1}([0-9][0-9])[.]{1}([0-9][0-9][0-9][0-9])'" [(ngModel)]="currentDate1"
+            (ngModelChange)="changeModel1($event)" [mindate]="mindate" [maxdate]="maxdate" nbpShowValidation=true disabled>
+          </nbp-datepicker>
+        </nbp-input-container>
+      </div>
+    </div> -->
+
+    <!-- DATE CON VISUALIZZAZIONE DEI PULSANTI PER L'ANNO --------------------------- -->
+    <!-- <nbp-dividing-line nbpTitle="Datepicker con Pulsanti Annuali">
+    </nbp-dividing-line>
+
+    <div class="row">
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input Data con Pulsanti Annuali'">
+
+          <nbp-datepicker-generic name="datePicker_2" [(ngModel)]="currentDate2" (ngModelChange)="changeModel2($event)" required validateDate
+            nbpShowValidation=true>
+          </nbp-datepicker-generic>
+
+        </nbp-input-container>
+        <nbp-button [nbpLabel]="'Cancella Data'" [nbpStyle]="secondary" (nbpClick)="cancellaData2()"></nbp-button>
+      </div>
+
+    </div> -->
+
+    <!-- CALENDAR SEMPLICE------------------------------ -->
+    <nbp-dividing-line nbpTitle="Calendario">
+    </nbp-dividing-line>
+
+    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input CALENDARIO'">
+
+          <nbp-calendar-generic name="datePicker_3" [(ngModel)]="currentDate3" (ngModelChange)="changeModel3($event)" required validateDate
+            nbpShowValidation=true>
+          </nbp-calendar-generic>
+
+        </nbp-input-container>
+        <nbp-button [nbpLabel]="'Cancella Data'" [nbpStyle]="secondary" (nbpClick)="cancellaData3()"></nbp-button>
+      </div>
+
+    </div>
+
+    <!-- CALENDAR CON DISABILITAZIONE GIORNI ------------------------------ -->
+    <nbp-dividing-line nbpTitle="Calendario abilitato dal 5 al 20 del mese corrente">
+    </nbp-dividing-line>
+
+    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+      <div class="col col-sm-8">
+        <nbp-input-container [nbpLabel]="'Input CALENDARIO con abilitazioni'">
+
+          <nbp-calendar-generic name="datePicker_4" [(ngModel)]="currentDate4" (ngModelChange)="changeModel4($event)" [startDateEnabled]="startDateEnabled"
+            [endDateEnabled]="endDateEnabled" required validateDate nbpShowValidation=true>
+          </nbp-calendar-generic>
+
+        </nbp-input-container>
+        <nbp-button [nbpLabel]="'Cancella Data'" [nbpStyle]="secondary" (nbpClick)="cancellaData4()"></nbp-button>
+      </div>
+
+    </div>
+
+
+    <!-- CHECKBOX ------------------------------ -->
+    <nbp-dividing-line nbpTitle="Checkbox">
+    </nbp-dividing-line>
+
+    <div class="row" style="text-align:left;">
+      <nbp-checkbox class="col-md-6 col-md-offset-1" nbpYellowBorder (change)="customFn($event)" name="checkbox11" nbpLabel="Precompilata Yellow"
+        [(ngModel)]="isActiveYellow1" required [tabindex]="6">
+      </nbp-checkbox>
+      <nbp-checkbox class="col-md-6" nbpGreenBorder (change)="customFn($event)" name="checkbox21" nbpLabel="Precompilata Green"
+        [(ngModel)]="isActiveGreen1" required>
+      </nbp-checkbox>
+      <nbp-checkbox class="col-md-6" name="name" [(ngModel)]="isActive1" nbpLabel="Attiva" required>
+      </nbp-checkbox>
+    </div>
+
+    <br>
+
+    <div class="row" style="text-align:left">
+      <nbp-checkbox class="col-md-6 col-md-offset-1" nbpYellowBorder disabled (change)="customFn($event)" name="checkbox12" nbpLabel="Precompilata disattivata Yellow"
+        [(ngModel)]="isActiveYellow2" required>
+      </nbp-checkbox>
+      <nbp-checkbox class="col-md-6" nbpGreenBorder disabled (change)="customFn($event)" name="checkbox22" nbpLabel="Precompilata Disattivata Green"
+        [(ngModel)]="isActiveGreen2" required>
+      </nbp-checkbox>
+      <nbp-checkbox class="col-md-6" name="checkbox3" disabled [(ngModel)]="isActive1" nbpLabel="Disattivata">
+      </nbp-checkbox>
+    </div>
+
+    <!-- RADIOBUTTON ------------------------------ -->
+    <nbp-dividing-line nbpTitle="Radiobutton">
+    </nbp-dividing-line>
+
+    <div class="row">
+      <nbp-radio class="col-md-4 col-md-offset-1" nbpLabel="Male" [(ngModel)]="sex" name="gender" value="M" required [tabindex]="7">
+      </nbp-radio>
+      <nbp-radio class="col-md-4 col-md-offset-1" nbpLabel="Female" [(ngModel)]="sex" name="gender" value="F" required>
+      </nbp-radio>
+      <nbp-radio class="col-md-4 col-md-offset-1" [(ngModel)]="sex2" name="gender1" value="M" name="Disabled" disabled>Male
+      </nbp-radio>
+      <nbp-radio class="col-md-4 col-md-offset-1" [(ngModel)]="sex2" name="gender1" value="F" name="Disabled" disabled>Female
+      </nbp-radio>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <nbp-radio class="col-md-4 col-md-offset-1" nbpLabel="Male" [(ngModel)]="sex3" name="gender2" value="M" required nbpYellowBorder
+        nbpSelectionSign="spunta">
+      </nbp-radio>
+      <nbp-radio class="col-md-4 col-md-offset-1" nbpLabel="Female" [(ngModel)]="sex3" name="gender2" value="F" required nbpYellowBorder
+        nbpSelectionSign="spunta">
+      </nbp-radio>
+      <nbp-radio class="col-md-4 col-md-offset-1" [(ngModel)]="sex5" name="Disabled2" value="M" disabled nbpYellowBorder nbpSelectionSign="spunta">Male
+      </nbp-radio>
+      <nbp-radio class="col-md-4 col-md-offset-1" [(ngModel)]="sex5" name="Disabled2" value="F" disabled nbpYellowBorder nbpSelectionSign="spunta">Female
+      </nbp-radio>
+    </div>
+
+    <!-- RADIOBUTTON SCELTA OBBLIGATORIA--------------- -->
+    <!-- <nbp-dividing-line nbpTitle="Radiobutton scelta obbligatoria">
+    </nbp-dividing-line>
+    <form #formRadio="ngForm" class="col-md-offset-1">
+      <div class="row">
+        <nbp-label class="pull-left" [nbpText]="'Esempio di Radiobutton obbligatorio'" [nbpRequired]="true"></nbp-label>
+      </div>
+      <div style="text-align:left">
+        <nbp-radio nbpDisplayInline="true" nbpLabel="Scelta 1" [(ngModel)]="sex4" name="radioExample" value="X" [required]="true">
+        </nbp-radio>
+        <nbp-radio nbpDisplayInline="true" nbpLabel="Scelta 2" [(ngModel)]="sex4" name="radioExample" value="Y" required>
+        </nbp-radio>
+        <nbp-radio nbpDisplayInline="true" nbpLabel="Scelta 3" [(ngModel)]="sex4" name="radioExample" value="Z" required>
+        </nbp-radio>
+      </div>
+      <div [hidden]="formRadio.valid" class="error-message pull-left">
+        Scelta Obbligatoria!
+      </div>
+    </form> -->
+    <!-- SPINNER CON TOOLTIP------------------------------ -->
+    <nbp-dividing-line class="row" nbpTitle="Spinner con Tooltip" (nbpClick)="buttonClicked($event)">
+    </nbp-dividing-line>
+
+    <div class="row" style="margin-bottom: 20px; padding-left: 20px; padding-right: 20px;">
+
+      <!-- SPINNER 1 210px -->
+      <div class="col-md-12" style="text-align: left;">
+        <div style="display: inline-block; width:230px">
+          <nbp-spinner-generic [label]="'spinner 230px'" [min]="0" [max]="7000" [step]="250" [value]="1" [showHelpTooltip]="_showHelpTooltip"
+            [tooltipHelpSize]="_tooltipHelpSize" [tooltipHelpVisibility]="_tooltipHelpVisibility" [tooltipHelpText]="_tooltipHelpText"
+            [tooltipHelpIcon]="'icomoon-Simboli_Risorsa-1'" [tooltipLeftSize]="_tooltipLeftSize" [tooltipLeftText]="_tooltipLeftText"
+            [tooltipRightSize]="_tooltipRightSize" [tooltipRightText]="_tooltipRightText" [tooltipHelpPosition]="'Top-Left'">
+          </nbp-spinner-generic>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" style="margin-bottom: 20px; padding-left: 20px; padding-right: 20px;">
+
+      <!-- SPINNER 2 310px -->
+      <div class="col-md-12" style="text-align: left;">
+        <div style="display: inline-block; width:310px">
+          <nbp-spinner-generic [label]="'spinner 310px'" [min]="0" [max]="7000" [step]="250" [value]="1" [showHelpTooltip]="_showHelpTooltip"
+            [tooltipHelpSize]="_tooltipHelpSize" [tooltipHelpVisibility]="_tooltipHelpVisibility" [tooltipHelpText]="_tooltipHelpText"
+            [tooltipHelpIcon]="'icomoon-Simboli_Risorsa-1'" [tooltipLeftSize]="_tooltipLeftSize" [tooltipLeftText]="_tooltipLeftText"
+            [tooltipRightSize]="_tooltipRightSize" [tooltipRightText]="_tooltipRightText" [tooltipHelpPosition]="'Top-Right'">
+          </nbp-spinner-generic>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SPINNER senza TOOLTIP------------------------------ -->
+    <nbp-dividing-line class="row" nbpTitle="Spinner senza Tooltip" (nbpClick)="buttonClicked($event)">
+    </nbp-dividing-line>
+
+    <div class="row" style="margin-bottom: 20px; padding-left: 20px; padding-right: 20px;">
+
+      <!-- SPINNER 1 230px -->
+      <div class="col-md-12" style="text-align: left;">
+        <div style="display: inline-block; width:230px">
+          <nbp-spinner-generic [label]="'spinner 230px no tooltip'" [min]="0" [max]="7000" [step]="250" [value]="1" [tooltipHelpSize]="_tooltipHelpSize"
+            [tooltipHelpVisibility]="_tooltipHelpVisibility" [tooltipHelpText]="_tooltipHelpText" [tooltipHelpIcon]="'icomoon-Simboli_Risorsa-1'"
+            [tooltipLeftSize]="_tooltipLeftSize" [tooltipLeftText]="_tooltipLeftText" [tooltipRightSize]="_tooltipRightSize"
+            [tooltipRightText]="_tooltipRightText">
+          </nbp-spinner-generic>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row" style="margin-bottom: 20px; padding-left: 20px; padding-right: 20px;">
+
+      <!-- SPINNER 2 310px -->
+      <div class="col-md-12" style="text-align: left;">
+        <div style="display: inline-block; width:310px">
+          <nbp-spinner-generic [label]="'spinner 310px no tooltip'" [min]="0" [max]="7000" [step]="250" [value]="1" [tooltipHelpSize]="_tooltipHelpSize"
+            [tooltipHelpVisibility]="_tooltipHelpVisibility" [tooltipHelpText]="_tooltipHelpText" [tooltipHelpIcon]="'icomoon-Simboli_Risorsa-1'"
+            [tooltipLeftSize]="_tooltipLeftSize" [tooltipLeftText]="_tooltipLeftText" [tooltipRightSize]="_tooltipRightSize"
+            [tooltipRightText]="_tooltipRightText">
+          </nbp-spinner-generic>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SLIDER ---------------------------------------------- -->
+
+    <nbp-dividing-line nbpTitle="Slider Semplice"></nbp-dividing-line>
+    <div style="width:100%">
+      <div style="display: table; margin: 0 auto;">
+
+        <div class="form-group">
+          <nbp-slider [type]="'0'" [name]="'slider_0'" [config]="slider0Config" [value]="slider0Value"></nbp-slider>
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+
+    <!-- SLIDER CON KEYPOINTS------------- -->
+
+    <nbp-dividing-line nbpTitle="Slider con KeyPoints">
+    </nbp-dividing-line>
+
+    <div style="width:100%">
+      <div style="display: table; margin: 0 auto;">
+
+        <div class="form-group">
+          <nbp-slider-keypoints [type]="'0'" [name]="'slider_1'" [config]="slider1Config" [_sliderValue]="slider1Value"></nbp-slider-keypoints>
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+
+    <!-- SLIDER STORICO------------- -->
+
+    <nbp-dividing-line nbpTitle="Slider Storico">
+    </nbp-dividing-line>
+    <div style="width:100%; margin-top:100px">
+
+      <div class="form-group">
+
+        <nbp-slider-storico [model]="modelSliderStorico" [startDate]="sliderStoPreStartDate" [endDate]="sliderStoPreEndDate"></nbp-slider-storico>
+
+      </div>
+      <!-- <div>
+        valore selezionato: {{modelSliderStorico.value}}
+      </div> -->
+    </div>
+    <br>
+    <br>
+    <!-- SLIDER RANGE TEMPORANEO------------- -->
+    <nbp-dividing-line nbpTitle="Slider con Range Temporaneo">
+    </nbp-dividing-line>
+
+    <div style="width:100%; margin-top:80px">
+
+      <div class="form-group">
+
+        <nbp-slider-range [model]="modelSliderRange" [startDate]="sliderRangeStartDate" [endDate]="sliderRangeEndDate"></nbp-slider-range>
+
+      </div>
+      <!-- <div>
+        <br/>
+        <br/> valori selezionati: {{modelSliderRange.value}}
+      </div> -->
+
+    </div>
+    <br>
+    <br>
+
+    <!-- DIVIDING LINE CON ICONA ------------------------------ -->
+    <nbp-dividing-line nbpTitleIcon="ico-comuni-search"></nbp-dividing-line>
+
+    <!-- DIVIDING LINE CON TITOLO E ICONA---------------------- -->
+    <nbp-dividing-line nbpTitle="Titolo e icona"></nbp-dividing-line>
+
+    <!-- DIVIDING LINE CON TITOLO ICONA E PULSANTE ------------ -->
+    <nbp-dividing-line nbpShowButton nbpTitleIcon="icomoon-Acquisto_borsa1" nbpButtonIconHover="icomoon-Modifica_matita6" nbpButtonIcon="icomoon-Modifica_matita5"
+      marginLeft='48' (nbpClick)="buttonClicked($event)"></nbp-dividing-line>
+
+    <!-- DIVIDING LINE CON TITOLO ICONA E PULSANTE ------------ -->
+    <nbp-dividing-line nbpShowButton nbpButtonIconHover="icomoon-Modifica_matita6" nbpButtonIcon="icomoon-Modifica_matita5" nbpTitle="Titolo e Pulsante"
+      marginLeft='44' (nbpClick)="buttonClicked($event)">
+    </nbp-dividing-line>
+
+    <!-- PANEL FILTER SEARCH  ------------ -->
+    <nbp-dividing-line nbpShowButton nbpButtonIconHover="icomoon-Modifica_matita6" nbpButtonIcon="icomoon-Modifica_matita5" nbpButtonLabel="Cerca e Filtra"
+      marginLeft='45' nbpTitle="Search + Filter" (nbpClick)="buttonFilterSearchClick($event)">
+    </nbp-dividing-line>
+
+    <ng-container *ngIf="openedFilterSearch">
+      <nbp-filter [itemsView]="itemsView" (searchEvent)="findFilterSearch($event)" (deleteEvent)="deleteFilterSearch()"></nbp-filter>
+    </ng-container>
+
+     <!-- DIVIDING LINE CON TITOLO E ICONA---------------------- -->
+     <nbp-dividing-line nbpTitle="On Boarding"></nbp-dividing-line>
+
+     <div style="width:100%; margin-top:80px">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <nbp-on-boarding
+                [hidden]="!viewTooltip_1"
+                [nbpPosition]="'Top'"
+                [nbpTemplateDataStep]="tooltipData"
+                [nbpText]="'Hover For Right Tooltip'"
+                [nbpSize]="toolSize"
+                [nbpVisibilityStrategy]="'load'"
+                (stepGiveUp)="dismissHelp_1($event)">
+                <div>
+                  <label class="example-text">Load tooltip on boarding Info </label>
+                </div>
+                </nbp-on-boarding>
+            </div>
+            <div class="col-md-12 text-center">
+                <nbp-on-boarding
+                *ngIf="viewTooltip_2"
+                [nbpPosition]="'Top'"
+                [nbpTemplateDataStep]="tooltipData"
+                [nbpText]="'Hover For Right Tooltip'"
+                [nbpSize]="toolSize"
+                [nbpVisibilityStrategy]="'click'"
+                (stepGiveUp)="dismissHelp_2($event)">
+                <div>
+                  <label class="example-text">click for tooltip on boarding Info </label>
+                </div>
+                </nbp-on-boarding>
+            </div>
+          </div>
+
+    </div>
+
+
+  </form>
+</div>

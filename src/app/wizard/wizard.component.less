@@ -1,0 +1,184 @@
+@import (less) "./../../less/color.less";
+
+
+/***** GENERALE ******/
+
+.page-container,
+.progress-container {
+    padding: 10px;
+}
+
+
+/****** PROGRESS *****/
+
+.wizard-progress ul {
+	list-style-type: none;
+}
+
+.wizard-progress li {
+    list-style: none;
+    line-height: 0.1em;
+}
+
+.wizard-progress li p {
+    display: inline-block;
+    font-size: 1em;
+    margin-left: 0.25em;
+}
+
+
+/******* PROGRESS - NODES *******/
+
+.wizard-node {
+    display: inline-block;
+}
+
+.wizard-node-todo, 
+.wizard-node-completed {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    transition: all 1000ms ease;
+    margin-left: 5px;
+}
+
+.wizard-node-todo {
+    background-color: @light_gray;
+}
+
+.wizard-node-completed {
+    background-color: @green;
+}
+
+.wizard-node-active {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background-color: none;
+    border: 1px solid @green;
+    margin-left: 3px
+}
+
+
+/******* PROGRESS - DIVIDERS *******/
+
+.wizard-divider {
+    height: 100px;
+}
+
+.wizard-divider-completed {
+    // commentato per VG 9.6
+    // width: 2px;
+    // margin-left: 10px;
+    // margin-top: -0.5em;
+    // background-color: @green;
+
+    // aggiunto per VG 9.6
+    margin-left: 10px;
+    margin-bottom: 2px;
+    margin-top: -2px;
+    border-left: 2px dashed green;
+ }
+
+ .wizard-divider-todo,
+ .wizard-divider-active { 
+    // commentato per VG 9.6
+    // margin-left: 7px;
+    // background-image: radial-gradient(@light_gray 25%, white 10%);
+    // background-position: left;
+    // background-size: 8px 8px;
+    // background-repeat: repeat-y;
+    // margin-bottom: -0.1em;
+    // margin-top: -0.2em;
+    
+    // aggiunto per VG 9.6
+    margin-left: 10px;
+    margin-bottom: 2px;
+    margin-top: -2px;
+    border-left: 2px dashed lightgray;
+}
+
+
+/******* PROGRESS - TEXT *******/
+
+.wizard-text {
+    position: relative;
+}
+
+.wizard-text-completed {
+    // color: @green;
+    color: darkest_gray;
+    font-size: 1em;
+	font-weight: regular;
+    font-family: Arial, Helvetica, sans-serif;
+	top: -0.1em;
+}
+
+.wizard-text-active {
+	// color: @green;
+    color: darkest_gray;
+    font-size: 1em;
+	font-weight: regular;
+    font-family: Arial, Helvetica, sans-serif;
+	top: -0.22em
+}
+
+.wizard-text-todo {
+	// color: @light_gray;
+    color: darkest_gray;
+    font-size: 1em;
+    font-weight: regular;
+    font-family: Arial, Helvetica, sans-serif;
+	top: -0.1em;
+}
+
+
+/******* IPOVISIONE *******/
+
+:host-context(.contrasto-on) {
+
+    .wizard-node-todo {
+        background-color: @white;
+        border: 1px solid black;
+    }
+
+    .wizard-node-completed {
+        background-color: @black;
+    }
+
+    .wizard-node-active {
+        border-color: @black;
+    }
+
+    // .wizard-divider-completed {
+    //     background-color: @black;
+    // }
+
+    // .wizard-divider-todo,
+    // .wizard-divider-active { 
+    //     background-image: radial-gradient(@black 25%, white 10%);
+    // }
+
+    .wizard-text-completed {
+        color: @black;
+    }
+
+    .wizard-text-active {
+        color: @black;
+    }
+
+    .wizard-text-todo {
+        color: @black;
+    }
+    
+    .wizard-divider-completed {
+        border-left: 2px dashed @black;
+    }
+    
+     .wizard-divider-todo,
+     .wizard-divider-active {
+        border-left: 2px dashed @black;
+    }
+
+}
+

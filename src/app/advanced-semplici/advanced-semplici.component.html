@@ -1,0 +1,39 @@
+<div class="container main-container" style="margin-top: 1.250em; min-height: 100%">
+  <div class="page-box-white mrg-t-20">
+    <div class="row mrg-b-10">
+      <label>Esempio di tabella Selezionabili</label>
+    </div>
+    <div class="row">
+      <div class="row col-md-24  mrg-t-20">
+        <nbp-table #arrayTable [nbpSelectionType]="selectionMethod1" [nbpOptions]='gridOptions' [nbpDataSource]='gridDataSource'
+          (nbpOnClickRow)='onClickRow($event)' (nbpOnSelectRow)='onRowActionEvent($event)' (nbpOnMultiSelectRow)='onRowsActionEvent($event)'
+          nbpAutoBind nbpLayoutAuto [scrollBar]="'auto'">
+
+          <nbp-table-column nbpId='IdColumn' nbpTitle='ID' nbpField='id' [nbpSortable]='true' [nbpFilter]='nbpPipe.DECIMAL' nbpFilterArg='1.0'
+            [nbpVisible]='true'>
+          </nbp-table-column>
+
+          <nbp-table-column nbpId='NameColumn' nbpTitle='Name' nbpField='name' [nbpSortable]='false' [nbpVisible]='true'>
+          </nbp-table-column>
+
+          <nbp-table-column nbpId='NameColumn' nbpTitle='Name' nbpField='name' [nbpSortable]='false' [nbpVisible]='true'>
+          </nbp-table-column>
+
+          <nbp-table-column nbpId='NameColumn' nbpTitle='Name' nbpField='name' [nbpSortable]='false' [nbpVisible]='true'>
+          </nbp-table-column>
+
+          <nbp-table-column nbpId='NameColumn' nbpTitle='Name' nbpField='name' [nbpSortable]='false' [nbpVisible]='true'>
+          </nbp-table-column>
+
+          <nbp-table-column nbpId='uidColumn' nbpTitle='Uid' nbpField='accountInfo.uid' [nbpSortable]='true' [nbpVisible]='true'>
+          </nbp-table-column>
+
+          <nbp-table-column nbpId='uidColumn' nbpTitle='Last login' [nbpFilter]='nbpPipe.DATE' nbpFilterArg='dd-MM-yyyy' nbpField='accountInfo.accountLastLogin'
+            [nbpSortable]='true' [nbpVisible]='true'>
+          </nbp-table-column>
+
+        </nbp-table>
+      </div>
+    </div>
+  </div>
+</div>

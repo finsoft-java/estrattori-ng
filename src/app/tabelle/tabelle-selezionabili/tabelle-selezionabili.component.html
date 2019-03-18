@@ -1,0 +1,61 @@
+<div class="table-container" [ngClass]="{ 'table-scrollbar-auto': tableScrollbarAuto, 'table-scrollbar-scroll': tableScrollbarScroll,'tab-grid':tabGrid, 'tab-row':tabRow, 'tab-col':tabCol  }">
+
+  <!-- <table class="fixed-width"> -->
+  <table>
+
+    <!-- testata tabella -->
+    <thead>
+      <th class="table-label">
+        <div class="col-md-4">TITLE</div>
+      </th>
+
+      <th *ngFor="let field of fieldsTable; let i=index" class="table-label" [class.sel]="radioSelection == i" [ngStyle]="colonneMock[0][field].style?_tableUtilService.strToJson(colonneMock[0][field].style):''">
+        <div style="display:inline-flex">
+          <!-- <nbp-radio nbpLabel="{{colonneMock[0][field].value}}" [(ngModel)]="radioSelection" value="{{i}}"></nbp-radio> -->
+          <div style="margin-left:+0px">
+            <nbp-radio [(ngModel)]="radioSelection" value="{{i}}"></nbp-radio>
+          </div>
+          <div style="margin-left:-10px; margin-top: 4px;">
+            {{colonneMock[0][field].value}}
+          </div>
+        </div>
+      </th>
+    </thead>
+
+    <!-- corpo tabella -->
+    <tbody *ngFor="let data of dataTable; let i=index">
+
+      <tr class="table-row" *ngIf="(currentPageNumber-1)*4 <= i && i < currentPageNumber * 4">
+        <!-- prima colonna sempre fissa -->
+        <td class="table-cell">
+          {{ "Testo sezione " + i }}
+        </td>
+
+        <!-- restanti colonne -->
+        <td *ngFor="let field of fieldsTable; let i=index;" class="table-cell" [class.sel]="radioSelection == i" [ngStyle]="data[field].style?_tableUtilService.strToJson(data[field].style):''">
+
+          <span *ngIf="data[field].type == 'icon'">
+            <img *ngIf="data[field].value" src="{{data[field].value}}" style="height:35px; width:35px">
+          </span>
+
+          <span *ngIf="data[field].type == 'iconintesa'">
+            <span class="icon {{data[field].value}}" style="height:35px; width:35px;color:green; font-weight:bold"></span>
+          </span>
+
+          <span *ngIf="data[field].type == 'date'">
+            {{ data[field].value | date: 'dd-MM-yyyy'}}
+          </span>
+
+          <span *ngIf="data[field].type.trim() == ''">
+            {{ data[field].value}}
+          </span>
+
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<pagination [nbpPaginationStatus]="_tableUtilService.currentPageStatus" (nbpOnFirst)="_onFirstPage($event)" (nbpOnLast)="_onLastPage($event)"
+  (nbpOnNext)="_onNextPage($event)" (nbpOnGoToPage)="_onGoToPage($event)" (nbpOnPrev)="_onPrevPage($event)" (nbpOnPageChange)="_onPageChange()"></pagination>

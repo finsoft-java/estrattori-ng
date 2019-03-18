@@ -1,0 +1,59 @@
+
+
+<div class="table-container header-col" [ngClass]="{ 'table-scrollbar-auto': tableScrollbarAuto, 'table-scrollbar-scroll': tableScrollbarScroll, 'tab-grid':tabGrid, 'tab-row-modal':tabRow, 'tab-col':tabCol  }">
+  <table>
+
+    <!-- testata tabella -->
+    <thead>
+      <th *ngFor="let field of fieldsTable; let i=index" class="table-label" [ngStyle]="_tableUtilService.strToJson(columnDescription[field].style)">
+        {{columnDescription[field].value}}
+        <div class="sort-button" (click)="sortBy(true, field)" *ngIf="!columnDescription[field].noSort">
+          <div class="arrow-down" [ngClass]="{'active': sorterBE.isCurrentSorting(field, false)}"></div>
+          <div class="arrow-up" [ngClass]="{'active': sorterBE.isCurrentSorting(field, true)}"></div>
+        </div>
+      </th>
+    </thead>
+    <!-- body tabella -->
+    <tbody *ngFor="let data of datiTabBE; let i=index">
+      <tr class="tab-row-modal" >
+          <!-- <tr class="table-row" *ngIf="(currentPageNumber-1)*5 <= i && i < currentPageNumber * 5" style="height: 35px"> -->
+        <td *ngFor="let field of fieldsTable; let i=index" class="table-cell text-center selection-cell" [ngStyle]="_tableUtilService.strToJson(columnDescription[field].styleColumn)">
+            <container-element  [ngSwitch]="columnDescription[field].type">
+                <span *ngSwitchCase="'date'" [ngStyle]="_tableUtilService.strToJson(data[field].style)" >
+                    {{ data[field].value | date: 'dd.MM.yyyy'}} 
+                </span>
+                <span *ngSwitchCase="'time'" [ngStyle]="_tableUtilService.strToJson(data[field].style)">
+                    {{ data[field].value | date: 'HH:mm:ss'}} 
+                </span>
+                <span *ngSwitchCase="'percent'" [ngStyle]="_tableUtilService.strToJson(data[field].style)">
+                    {{ (data[field].value)?(data[field].value + '%'):'' }} 
+                </span>
+                <span *ngSwitchCase="'arr-curr'" [ngStyle]="_tableUtilService.strToJson(data[field].style)">
+                  <!-- <pre>{{data[field].value[0]}}</pre> -->
+                  <span *ngFor="let valCurr of data[field].value; let idx = index"
+                        [ngStyle]="((idx===0) && data[field].value[1]) && {'text-decoration': 'line-through','padding-right':'10px'}" >
+                    {{valCurr | currency:'EUR':true}}
+                  </span>
+                  <!-- 
+                  <span *ngFor="valCurr in data[field].value ">
+                    {{valCurr | currency:'EUR':true}}
+                  </span> -->
+                </span>
+                <!-- <span *ngSwitchDefault [ngStyle]="_tableUtilService.strToJson(data[field].style)">
+                    { data[field].value}}
+                </span> -->
+                <span *ngSwitchDefault [ngStyle]="_tableUtilService.strToJson(data[field].style)">
+                    {{data[field].value}}
+                </span>
+            </container-element >
+            
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<!-- <pagination [nbpPaginationStatus]="_tableUtilService.currentPageStatus" (nbpOnFirst)="_onFirstPage($event)" (nbpOnLast)="_onLastPage($event)"
+  (nbpOnNext)="_onNextPage($event)" (nbpOnGoToPage)="_onGoToPage($event)" (nbpOnPrev)="_onPrevPage($event)" (nbpOnPageChange)="_onPageChange()">
+</pagination> -->

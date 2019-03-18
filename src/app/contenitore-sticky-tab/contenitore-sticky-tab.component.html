@@ -1,0 +1,10 @@
+<div style="text-align:center; border-radius: 5px; margin-top: 1.250em; min-height: 100%; max-width: 630px" class="container">
+
+    <div class="row" style="font-size: 1.5em;">
+        <nbp-dividing-line [nbpLineStyle]="primary" nbpTitle="Catalogo prodotti"></nbp-dividing-line>
+    </div>
+    <div class="row" style="padding-left: 20px; padding-right: 20px;margin-top: 20px;">
+        <nbp-sticky-tab-generic [items]="items" [selectedTab] = "selectedTab" [posStickyOn] = "70" (tabChange) = "handleTabChange($event)" ></nbp-sticky-tab-generic>
+    </div>
+    
+</div>

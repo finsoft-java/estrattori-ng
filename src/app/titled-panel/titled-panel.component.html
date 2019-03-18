@@ -1,0 +1,17 @@
+<div class="titled-panel-container" [ngClass]="{'sticky':sticky, 'no-border': noBorder()}">
+  <div class="row m-t-10 mrg-r-l-0">
+    <div class="container">
+      <div class="col col-md-6 col-sm-6 col-xs-6 prev-page-btn">
+        <span (click)="prevPageFn()" role="button">
+          <span class="prev-page-btn-arrow icomoon-Simboli_Risorsa-12"></span>
+          <span class="prev-page-btn-text">{{ textPrevLink | translate}} </span>
+        </span>
+      </div>
+      <div class="col col-md-12 col-sm-12 col-xs-12 label-center" [ngClass]="{'mrg-t-5': !getSubtitle()}">
+        <div *ngIf="getSubtitle()" class="titled-panel-subtitle">{{getSubtitle()}}</div>
+        <div class="titled-panel-title">{{getTitle()}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="sticky" style="height:55px"></div>

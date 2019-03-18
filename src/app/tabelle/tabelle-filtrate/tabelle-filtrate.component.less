@@ -1,0 +1,550 @@
+@import (less) "./../../../less/color.less";
+@import (less) "../common.less";
+.col-3 {
+  width: calc((100vw / 3) - 1vw);
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  float: left;
+}
+
+.cancella-button {
+  margin-left: 23px;
+  background-color: #323232;
+  width: 80%;
+  height: 40px;
+  color: @light_gray;
+  &:hover {
+    background-color: @orange;
+  }
+}
+
+.button-group-filter {
+  margin-top: 20px;
+}
+
+.applica-button {
+  margin-left: 23px;
+  background-color: white;
+  width: 80%;
+  height: 40px;
+  color: @black;
+  &:hover {
+    background-color: @orange;
+  }
+}
+
+.buttonFindSearch {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  // padding: 14px 28px;
+  // font-size: 16px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -1px // border-radius: 50%;
+}
+
+
+/* Green */
+
+.triangolo-filter {
+  width: 0;
+  height: 0;
+  z-index: 10;
+  border-left: 0.625em solid transparent;
+  border-right: 0.625em solid transparent;
+  border-bottom: 0.625em solid #f2f2f2;
+  display: inline-flex;
+  margin-right:110px;
+  width:20px;
+  height:20px;
+}
+
+.arrow-filter {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid @light_gray;
+  margin-right: 6.875em;
+}
+
+// 0.5px solid @light_gray
+
+.arrow-filter::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: -11px;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #f2f2f2;
+}
+
+// .cercaFiltra {
+//   font-family: 'Arial Bold', 'Arial';
+//   font-weight: bold;
+//   font-size: 0.750em;
+//   color: #258900;
+//   width: 70px;
+//   text-align: left;
+//   font-size: 11px;
+//   cursor: pointer;
+//   padding: 0;
+//   border: 0;
+//   margin: 0;
+// }
+
+// .success {
+//   border-color: #4CAF50;
+//   color: red;
+// }
+// .success:hover {
+//   background-color: #4CAF50;
+//   color: white;
+// }
+// .btn-circle.btn-lg {
+//   border-color: #4CAF50;
+//   color: white;
+//   width: 50px;
+//   height: 50px;
+//   padding: 10px 16px;
+//   font-size: 18px;
+//   line-height: 1.33;
+//   border-radius: 25px;
+// }
+label {
+  color: black;
+  font-size: small;
+  margin-left: 35px;
+}
+
+.filter-input {
+  // background-color: @darker_gray;
+  background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  text-align: left;
+  color: rgba(50, 50, 50, 1);
+  margin-top: 8px;
+  height: 37px;
+  width: 80%;
+  margin-left: 3px;
+  width: 230px;
+  height: 50px;
+}
+
+.filter-input:focus {
+  // background-color: @darker_gray;
+  background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  text-align: left;
+  // border: 1px @light_gray solid;
+  border: 1px rgba(137, 188, 114, 1) solid;
+  // color: @orange;
+  color: rgba(50, 50, 50, 1);
+  margin-top: 8px;
+  height: 37px;
+  width: 80%;
+  margin-left: 3px;
+  width: 230px;
+  height: 50px;
+}
+
+// .filter-row {
+//   border: 1px @light_gray solid;
+//   height: 80px;
+// }
+.filter-panel {
+  // background-color: @darker_gray;
+  background-color: rgba(242, 242, 242, 1);
+  color: @white;
+  width: 100%;
+  height: 240px;
+  z-index: 20px;
+}
+
+.table-select {
+  border-collapse: separate;
+}
+
+.table-scrollbar {
+  overflow-x: scroll;
+}
+
+.content-accordion {
+  background-color: @dark_white;
+  .accordion-panel {
+    text-align: center;
+    font-size: 0.75em;
+    font-family: Arial;
+    font-style: normal;
+    height: 6.25em;
+  }
+}
+
+.table-cell {
+  position: relative;
+  padding: 0 0.688em 0 0.688em;
+  vertical-align: middle;
+  &.with-borders {
+    border: 1px solid @light_gray;
+  }
+  &.with-checkbox {
+    width: 3.429em;
+    padding: 0;
+    text-align: center;
+  }
+  &.with-accordion {
+    width: 3.429em;
+    padding: 0;
+    text-align: center;
+  }
+  &.cell-select {
+    color: @gray;
+    height: 4.375em;
+    border: 1px solid @light_gray;
+    background-color: @lightest_gray;
+    &.select {
+      background-color: @lightest_green;
+      border: 1px solid @gray;
+      border-top: none;
+    }
+  }
+  a {
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.table-pagination {
+  margin-top: 0.625em;
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .table-page-btn {
+    display: inline-block;
+    color: @green;
+    cursor: pointer;
+    margin-top: 0.313em;
+    &.disabled {
+      color: @gray;
+      cursor: auto;
+    }
+    .page-btn-arrow {
+      font-size: 1.250em;
+      vertical-align: middle;
+    }
+    .page-btn-text {
+      padding: 0 0.625em 0 0.625em;
+      font-size: 0.813em;
+      font-weight: bold;
+    }
+    .table-page-number {
+      display: inline-block;
+      border: 1px solid @green;
+      font-weight: bold;
+      color: @green;
+      background: @white;
+      text-align: center;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      width: 2em;
+      height: 2em;
+      font-size: 0.938em;
+      line-height: 2em;
+      margin: 0 0.125em 0 0.125em;
+      cursor: pointer;
+      &.backward {
+        margin-right: -0.125em;
+      }
+      &.forward {
+        margin-left: -0.125em;
+      }
+    }
+    .table-page-number.active {
+      color: @white;
+      background: @green;
+    }
+  }
+  .table-pagination-center {
+    text-align: center;
+    .table-page-btn {
+      margin-top: 0;
+    }
+  }
+}
+
+.sort-button {
+  cursor: pointer;
+}
+
+.annulla-check {
+  display: inline-block;
+  color: @green;
+  cursor: pointer;
+  margin-top: 0.313em;
+  .page-btn-text {
+    padding: 0 0.625em 0 0.625em;
+    font-size: 0.813em;
+    font-weight: bold;
+  }
+}
+
+.row-nowrap {
+  white-space: nowrap;
+}
+
+.horizontal-scrollbar {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.table-full-width {
+  width: 100%;
+}
+
+.auto-width {
+  table-layout: auto !important;
+}
+
+.fixed-width {
+  table-layout: fixed !important;
+}
+
+.table-image {
+  text-align: center;
+  padding: 10px !important;
+}
+
+//tooltip al mouseover
+[tooltip-hover]:before {
+  /* needed - do not touch */
+  content: attr(tooltip-hover);
+  position: absolute;
+  overflow: none;
+  opacity: 0;
+  /* customizable */
+  //transition: all 0.15s ease;
+  padding: 20px;
+  color: @white;
+  border-radius: 2px;
+  //box-shadow: 2px 2px 1px silver;
+  background: @darkest_gray;
+  margin-top: 0px;
+  margin-left: 0px
+}
+
+[tooltip-hover]:hover:before {
+  /* needed - do not touch */
+  opacity: 1;
+  overflow: none;
+  /* customizable */
+  background: @darkest_gray;
+  margin-top: -50px;
+  //margin-left: 20px;
+}
+
+[tooltip-hover]:not([tooltip-persistent]):before {
+  pointer-events: none;
+}
+
+//tooltip al click
+[tooltip-click]:before {
+  /* needed - do not touch */
+  content: attr(tooltip-click);
+  position: absolute;
+  opacity: 0;
+  /* customizable */
+  //transition: all 0.15s ease;
+  padding: 20px;
+  color: @white;
+  border-radius: 2px;
+  //box-shadow: 2px 2px 1px silver;
+  background: @darkest_gray;
+  margin-top: 0px;
+  margin-left: 0px
+}
+
+[tooltip-click]:visited:before {
+  /* needed - do not touch */
+  opacity: 1;
+  /* customizable */
+  background: @darkest_gray;
+  margin-top: -50px;
+  //margin-left: 20px;
+}
+
+[tooltip-click]:not([tooltip-persistent]):before {
+  pointer-events: none;
+}
+
+.tooltipClickLabel {
+  position: absolute;
+  padding: 20px;
+  color: #FFFFFF;
+  border-radius: 2px;
+  background: #323232;
+  margin-top: 0px;
+  margin-left: 0px;
+  bottom: 40px;
+  z-index: 1000;
+}
+
+.tooltipClickLabel:after {
+  content: "\A";
+  color: #323232;
+  width: 0;
+  height: 0;
+  /* z-index: 10; */
+  border-left: 0.625em solid transparent;
+  border-right: 0.625em solid transparent;
+  border-top: 0.625em solid;
+  /* float: right; */
+  position: absolute;
+  /* margin-right: 6.8em; */
+  margin-top: 2.813em;
+  left: 50%;
+}
+
+.tooltipClickLabel .closeTip {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  z-index: 1000;
+  color: @orange;
+  cursor: pointer;
+}
+
+.green-link {
+  color: @green;
+}
+
+// @import (less) "../../tabelle/table/table.component.contrast.less";
+:host-context(.contrasto-on) {
+  .table-label {
+    color: @white;
+    border-color: @white;
+    background-color: @black;
+    &.label-select {
+      color: @black;
+      border-color: @white;
+      background-color: @black;
+      &.select {
+        background-color: @white;
+        border-color: @black;
+      }
+    }
+  }
+  .content-accordion {
+    background-color: @white;
+  }
+  .table-cell {
+    &.with-borders {
+      border-color: @black;
+    }
+    &.cell-select {
+      color: @black;
+      border-color: @black;
+      background-color: @white;
+      &.select {
+        border-color: @white;
+        background-color: @black;
+      }
+    }
+  }
+  .table-pagination {
+    .table-page-btn {
+      color: @black;
+      &.disabled {
+        color: @white;
+      }
+      .table-page-number {
+        border-color: @black;
+        color: @black;
+        background: @white;
+      }
+      .table-page-number.active {
+        color: @white;
+        background: @black;
+      }
+    }
+  }
+  .arrow-up {
+    border-bottom-color: @white;
+  }
+  .arrow-up::before {
+    border-bottom-color: @black;
+  }
+  .arrow-down {
+    border-top-color: @white;
+  }
+  .arrow-down::before {
+    border-top-color: @black;
+  }
+  .annulla-check {
+    color: @black;
+  }
+  [tooltip-hover]:before {
+    color: @white;
+    background: @black;
+  }
+  [tooltip-hover]:hover:before {
+    background: @black;
+  }
+  [tooltip-click]:before {
+    color: @white;
+    background: @black;
+  }
+  [tooltip-click]:visited:before {
+    background: @black;
+  }
+  .tooltipClickLabel {
+    color: @white;
+    background: @black;
+  }
+  .tooltipClickLabel:after {
+    color: @black;
+  }
+  .tooltipClickLabel .closeTip {
+    color: @black;
+  }
+  .green-link {
+    color: @black;
+  }
+}
+
+:host-context(.contrasto-on) {
+  .cancella-button, .applica-button {
+    background-color: @white;
+    color: @black;
+    border-color: @white;
+    &:hover {
+      background-color: @black;
+      color: @white;
+    }
+  }
+  .filter-input {
+    background-color: @black;
+    border-color: @white;
+    color: @white;
+  }
+  // .filter-row {
+  //   border-color: @white;
+  // }
+  .filter-panel {
+    background-color: @black;
+    color: @white;
+  }
+}

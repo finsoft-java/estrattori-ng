@@ -1,0 +1,98 @@
+<!-- componente stepper -->
+<nbp-sequenziale-sottostep-generic [steps]="steps" [pagingSteps]="pagingSteps" [navigateOperation]="navigateOperation" (stepEvent)=handleStepEvent($event)>
+</nbp-sequenziale-sottostep-generic>
+
+<!-- pagine html -->
+<ng-container *ngIf="selectedTemplate == 'template1'">
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML con IF e NG-CONTAINER n.ro 1 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+
+    <div style="width:100%; text-align:center">
+      <nbp-button [nbpLabel]="'Open Modal by change value'" [nbpStyle]="primary" (nbpClick)='openModal()' [tabindex]="7"></nbp-button>
+    </div>
+    <br>
+    <nbp-modal #modalCancellazione nbpOpened="true">
+      Contenuto della modale
+    </nbp-modal>
+    <br>
+    <div style="width:100%; text-align:center">
+      <nbp-button [nbpLabel]="'Open Modal by change value'" [nbpStyle]="primary" (nbpClick)='openModal()' [tabindex]="7"></nbp-button>
+    </div>
+    <br>
+    <nbp-modal #modalCancellazione nbpOpened="isOpened2">
+      Contenuto della modale
+    </nbp-modal>
+    <br>
+    <br>
+  </div>
+</ng-container>
+<ng-container *ngIf="selectedTemplate == 'template2'">
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con IF e NG-CONTAINER n.ro 2 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-container>
+<ng-container *ngIf="selectedTemplate == 'template3'">
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con IF e NG-CONTAINER n.ro 3 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-container>
+<ng-container *ngIf="selectedTemplate == 'template4'">
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con IF e NG-CONTAINER n.ro 4 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-container>
+<ng-container *ngIf="selectedTemplate == 'template5'">
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con IF e NG-CONTAINER n.ro 5 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-container>
+
+<!-- pulsanti stepper -->
+<div class="container main-container">
+  <div class="row">
+    <nbp-button [disabled]=disablePrev [nbpLabel]="'Indietro'" (nbpClick)="Prev()"></nbp-button>
+    <nbp-button [disabled]=disableNext class="pull-right" [nbpLabel]="'Avanti'" [nbpStyle]="primary" (nbpClick)="Next()"></nbp-button>
+  </div>
+</div>

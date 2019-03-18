@@ -1,0 +1,28 @@
+{
+  "name": "src",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/repo"
+  },
+  "author": {
+    "name": "DESKTOP-02ED209\Mau",
+    "email": "m.pirillo@reply.it"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/username/repo/issues"
+  },
+  "main": "src.umd.js",
+  "module": "src.js",
+  "jsnext:main": "src.js",
+  "typings": "src.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}

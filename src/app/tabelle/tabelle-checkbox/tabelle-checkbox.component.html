@@ -1,0 +1,66 @@
+<div class="table-container header-col" style="width: 99%" [ngClass]="{ 'table-scrollbar-auto': tableScrollbarAuto, 'table-scrollbar-scroll': tableScrollbarScroll,'tab-grid':tabGrid, 'tab-row':tabRow, 'tab-col':tabCol }">
+
+  <table>
+
+    <!-- testata tabella -->
+    <thead>
+      <th class="table-label" style="width: 50px; height: 50px;">
+        <div style="width: 52px; height: 21px; margin-bottom: 3px;">
+          <nbp-checkbox (change)="setAllActive()" [(ngModel)]="isAllActive">
+          </nbp-checkbox>
+        </div>
+      </th>
+
+      <th *ngFor="let field of fieldsTable; let i=index" class="table-label" [ngStyle]="_tableUtilService.strToJson(colonneTabella[0][field].style)">
+        {{colonneTabella[0][field].value}}
+        <div class="sort-button" (click)="sortBy(true, field)">
+          <div class="arrow-down" [ngClass]="{'active': sorter.isCurrentSorting(field, false)}"></div>
+          <div class="arrow-up" [ngClass]="{'active': sorter.isCurrentSorting(field, true)}"></div>
+        </div>
+      </th>
+    </thead>
+    <!-- body tabella -->
+    <tbody *ngFor="let data of datiTabella; let i=index">
+
+      <!-- Finsoft - bugfix (_tableUtilService.currentPageStatus.pageSize) al posto di "4" -->
+      <tr class="table-row" [ngClass]="{'selected': isActive[i]}" *ngIf="(currentPageNumber-1)*(_tableUtilService.currentPageStatus.pageSize) <= i && i < currentPageNumber * (_tableUtilService.currentPageStatus.pageSize)">
+
+        <td class="table-cell text-center" style="width: 50px;">
+          <div style="width: 46px; height: 25px;">
+            <nbp-checkbox (change)="customFn(i)" [(ngModel)]="isActive[i]">
+            </nbp-checkbox>
+          </div>
+        </td>
+
+        <td *ngFor="let field of fieldsTable; let i=index" class="table-cell text-center" [ngStyle]="_tableUtilService.strToJson(colonneTabella[0][field].styleColumn)">
+          <span *ngIf="data[field].type == 'icon'">
+            <img *ngIf="data[field].value" src="{{data[field].value}}" style="height:35px; width:35px">
+          </span>
+          <span *ngIf="data[field].type == 'iconintesa'">
+            <span class="icon {{data[field].value}}" style="font-size:35px;width:35px; color:green; font-weight:bold"></span>
+            <span class="icon hover {{data[field].subValue}}" style="font-size:35px;width:35px; color:green; font-weight:bold"></span>
+          </span>
+          <span *ngIf="data[field].type == 'date'">
+            {{ data[field].value | date: 'dd.MM.yyyy'}}
+          </span>
+          <!-- devi inserire lo stile su questo cazzo di componente. non va -->
+          <span *ngIf="!data[field].type.trim()" [ngStyle]="_tableUtilService.strToJson(data[field].style)">
+            {{ data[field].value}}
+            <ng-container *ngIf="data[field].type.trim() == ''">
+              <br>
+              <small>{{ data[field].subValue}}</small>
+            </ng-container>
+          </span>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<pagination [nbpPaginationStatus]="_tableUtilService.currentPageStatus" (nbpOnFirst)="_onFirstPage($event)" (nbpOnLast)="_onLastPage($event)"
+  (nbpOnNext)="_onNextPage($event)" (nbpOnGoToPage)="_onGoToPage($event)" (nbpOnPrev)="_onPrevPage($event)" (nbpOnPageChange)="_onPageChange()">
+</pagination>

@@ -1,0 +1,69 @@
+{
+  "data":[
+  {
+    "id": 40,
+    "name": "Sheryl",
+    "surname": "Andrews",
+    "street": "Herzl Street"
+  },
+  {
+    "id": 41,
+    "name": "Sexton",
+    "surname": "Waller",
+    "street": "Hendrix Street"
+  },
+  {
+    "id": 42,
+    "name": "Thelma",
+    "surname": "Cross",
+    "street": "Pooles Lane"
+  },
+  {
+    "id": 43,
+    "name": "Reed",
+    "surname": "Green",
+    "street": "Dearborn Court"
+  },
+  {
+    "id": 44,
+    "name": "Barnes",
+    "surname": "Buchanan",
+    "street": "Cobek Court"
+  },
+  {
+    "id": 45,
+    "name": "Gail",
+    "surname": "Hebert",
+    "street": "Post Court"
+  },
+  {
+    "id": 46,
+    "name": "Corrine",
+    "surname": "Small",
+    "street": "Laurel Avenue"
+  },
+  {
+    "id": 47,
+    "name": "Huffman",
+    "surname": "Finch",
+    "street": "Melba Court"
+  },
+  {
+    "id": 48,
+    "name": "Parks",
+    "surname": "Mathews",
+    "street": "Scott Avenue"
+  },
+  {
+    "id": 49,
+    "name": "Etta",
+    "surname": "Downs",
+    "street": "Amber Street"
+  }
+],
+ "status": {
+        "pageSize": 10,
+        "pageNumber": 3,
+        "totalRecords": 35
+      }
+}

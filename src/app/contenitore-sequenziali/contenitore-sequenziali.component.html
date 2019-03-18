@@ -1,0 +1,121 @@
+<!-- componente stepper -->
+<nbp-sequenziale-generic [steps]="steps" [navigateOperation]="navigateOperation" (stepEvent)=handleStepEvent($event)>
+</nbp-sequenziale-generic>
+
+<!-- switch template -->
+<ng-container [ngSwitch]="selectedTemplate">
+  <ng-container *ngSwitchCase="'template1'">
+    <ng-container *ngTemplateOutlet="template1"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'template2'">
+    <ng-container *ngTemplateOutlet="template2"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'template3'">
+    <ng-container *ngTemplateOutlet="template3"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'template4'">
+    <ng-container *ngTemplateOutlet="template4"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="'template5'">
+    <ng-container *ngTemplateOutlet="template5"></ng-container>
+  </ng-container>
+</ng-container>
+
+<!-- pulsanti stepper -->
+<div class="container main-container">
+  <div class="row">
+    <nbp-button [disabled]=disablePrev [nbpLabel]="'Indietro'" (nbpClick)="Prev()"></nbp-button>
+    <nbp-button [disabled]=disableNext class="pull-right" [nbpLabel]="'Avanti'" [nbpStyle]="primary" (nbpClick)="Next()"></nbp-button>
+  </div>
+</div>
+
+<!-- template disponibili -->
+<ng-template #template1>
+  <div>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center">
+      <nbp-button [nbpLabel]="'Open Modal by change value'" [nbpStyle]="primary" (nbpClick)='openModal()' [tabindex]="7"></nbp-button>
+    </div>
+    <br>
+      <nbp-modal #modalCancellazione [(nbpOpened)]="isOpened2"
+                 (nbpOnButtonClicked)='onClickBtnModaleCancella($event)' >
+        Contenuto della modale
+      </nbp-modal>
+    <br>
+    <div style="width:100%; text-align:center">
+      <nbp-button [nbpLabel]="'Open Modal by change value'" [nbpStyle]="primary" (nbpClick)='openModal()' [tabindex]="7"></nbp-button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <nbp-modal #modalCancellazione [(nbpOpened)]="isOpened2"
+               (nbpOnButtonClicked)='onClickBtnModaleCancella($event)' >
+      Contenuto della modale
+    </nbp-modal>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-template>
+<ng-template #template2>
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con NG-TEMPLATE n.ro 2 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-template>
+<ng-template #template3>
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con NG-TEMPLATE n.ro 3 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-template>
+<ng-template #template4>
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con NG-TEMPLATE n.ro 4 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-template>
+<ng-template #template5>
+  <div>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center"> HTML selezionato con NG-TEMPLATE n.ro 5 da implementare </div>
+    <br>
+    <div style="width:100%; text-align:center"> {{alertMessage}} </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+</ng-template>
+
+
+<!-- 8.30 bisceglie 334 pagano bisceglie 8.30-->

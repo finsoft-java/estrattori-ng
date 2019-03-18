@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="page-box-transparent mrg-t-20">
+    <div class="row mrg-b-10">
+      <label>Estrattori</label>
+    </div>
+    <div class="row col-md-24">
+      <div>
+        <app-tabelle-checkbox
+            [tipoTab]="'row'"
+            [headerTab] = "checkBoxColonne"
+            [dataTab] = "checkBoxData"
+            [selectedRows] = "checkBoxIsActive"
+            [scrollBar]="'scrool'">
+        </app-tabelle-checkbox>
+      </div>
+    </div>
+  </div>
+</div>

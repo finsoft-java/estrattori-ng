@@ -1,0 +1,50 @@
+<nbp-input-container [nbpLabel]="(domanda.tipoInputRisposta == 'RADIO' || domanda.tipoInputRisposta == 'CHECKBOX') && domanda.flgObbligatoria ? domanda.testoDomanda + '*' : domanda.testoDomanda">
+
+    <ng-container *ngIf="domanda.tooltip">
+        <nbp-tooltip [nbpPosition]="'Right'" [nbpSize]="tooltipSizeMedium" [nbpText]="domanda.tooltip.contentTooltip" nbpVisibilityStrategy="click">
+            <div class="icon icomoon-Simboli_Risorsa-1"></div>
+        </nbp-tooltip>
+    </ng-container>
+
+    <div [ngSwitch]="domanda.tipoInputRisposta">
+
+        <div *ngSwitchCase="'SELECT'" [ngClass]="{'small-input':options?.size == 'small'}">
+            <nbp-combo [nbpDataSource]="buildComboDataSource(domanda)" nbpViewField="testoRisposta" [(ngModel)]="domanda.rispostaUtente" (ngModelChange)="onModelChange(domanda)" nbpKeyField="codRisposta" nbpBindingToKeyField [name]="domanda.codDomanda" [required]="domanda.flgObbligatoria"
+                [nbpShowEmptyValue]="!domanda.flgObbligatoria" placeholder="Scegli">
+            </nbp-combo>
+        </div>
+
+        <div *ngSwitchCase="'CHECKBOX'">
+            <ng-container *ngIf="!options?.inline; else inline">
+                <nbp-checkbox *ngFor="let risposta of domanda.risposte" [name]="domanda.codDomanda" [nbpDisplayInline]="options?.inline" [(ngModel)]="risposta.rispostaSelezionata" (ngModelChange)="onModelChange(domanda)" [required]="domanda.flgObbligatoria">
+                    {{risposta.testoRisposta}}
+                </nbp-checkbox>
+            </ng-container>
+            <ng-template #inline>
+                <div class="row">
+                    <div *ngFor="let risposta of domanda.risposte" class="col-md-8">
+                        <nbp-checkbox [name]="domanda.codDomanda" [nbpDisplayInline]="options?.inline" [(ngModel)]="risposta.rispostaSelezionata" (ngModelChange)="onModelChange(domanda)" [required]="domanda.flgObbligatoria">
+                            {{risposta.testoRisposta}}
+                        </nbp-checkbox>
+                    </div>
+                </div>
+            </ng-template>
+            <div class="error-message" *ngIf="!checkedRequired(domanda.risposte) && domanda.flgObbligatoria ? true : false">
+                Scelta obbligatoria
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'RADIO'">
+            <nbp-radio *ngFor="let risposta of domanda.risposte" [nbpLabel]="risposta.testoRisposta" [name]="domanda.codDomanda" [value]="risposta.codRisposta" [(ngModel)]="domanda.rispostaUtente" (ngModelChange)="onModelChange(domanda)" nbpDisplayInline="true" [required]="domanda.flgObbligatoria">
+            </nbp-radio>
+            <div class="error-message" *ngIf="!domanda.rispostaUtente && domanda.flgObbligatoria ? true : false">
+                Scelta obbligatoria
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'SPINNER'">
+            <nbp-spinner [name]="domanda.codDomanda" min="1" [(ngModel)]="domanda.risposte[0].valoreRisposta" (ngModelChange)="onModelChange(domanda)" [required]="domanda.flgObbligatoria" rangevalidator>
+            </nbp-spinner>
+        </div>
+    </div>
+</nbp-input-container>

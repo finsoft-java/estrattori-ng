@@ -1,0 +1,388 @@
+<!---------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- Analizzo l'url e vedo all'interno cosa ce chiamando la tabella corrispomndente e settando il nro di righe che deve visualizzare -->
+<!---------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+<!-- TABELLA MULTIPLA? -->
+<div *ngIf="currentUrl.indexOf('multip') > 0" class="container main-container" style="margin-top: 1.250em">
+    <div class="page-box-white mrg-t-20">
+        <div style="margin-bottom:20px">
+            <label>Esempio di tabella Multipla</label>
+        </div>
+        <app-nbp-table></app-nbp-table>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else griglia">
+            <h3>Funzionalità non disponibile nelle tabelle tipo Multipla</h3>
+        </div>
+        <ng-template #multipla>
+            <app-nbp-table></app-nbp-table>
+        </ng-template>
+
+    </div>
+</div>
+
+<!-- TABELLA SEMPLICE -->
+
+<div *ngIf="currentUrl.indexOf('semplic') > 0" class="container main-container" style="margin-top: 1.250em">
+    <div class="page-box-white mrg-t-20">
+        <div style="margin-bottom:20px">
+            <label>Esempio di tabella con Paginazione BE</label>
+        </div>
+        <div *ngIf="currentUrl.indexOf('scroll') > 0; else semplici">
+            <app-tabelle-semplici [tipoTab]="'row'" [selectedRow]="4" [scrollBar]="'scroll'"></app-tabelle-semplici>
+        </div>
+        <ng-template #semplici>
+            <app-tabelle-semplici [tipoTab]="'row'" [selectedRow]="4" [scrollBar]="'auto'"></app-tabelle-semplici>
+        </ng-template>
+
+    </div>
+</div>
+
+<!-- TABELLA FILTRATA -->
+<div *ngIf="currentUrl.indexOf('filtra') > 0" class="container">
+    <div class="page-box-transparent mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Esempio di tabella Filtrata</label>
+        </div>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else filtrate">
+            <app-tabelle-filtrate [tipoTab]="'row'" [itemsSelection]="itemsSelection" [selectedRow]="6" [scrollBar]="'scroll'"></app-tabelle-filtrate>
+        </div>
+        <ng-template #filtrate>
+            <app-tabelle-filtrate [tipoTab]="'row'" [itemsSelection]="itemsSelection" [selectedRow]="6" [scrollBar]="'auto'"></app-tabelle-filtrate>
+        </ng-template>
+
+    </div>
+
+    <div class="page-box-transparent mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Esempio di tabella Filtrata con paginatore a lettera</label>
+        </div>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else filtratePl">
+            <app-tabelle-filtrate-pl [tipoTab]="'row'" [itemsSelection]="itemsSelection" [selectedRow]="6" [scrollBar]="'scroll'" [useIndexAlphabeticFilter]="false"></app-tabelle-filtrate-pl>
+        </div>
+        <ng-template #filtratePl>
+            <app-tabelle-filtrate-pl [tipoTab]="'row'" [itemsSelection]="itemsSelection" [selectedRow]="6" [scrollBar]="'auto'" [useIndexAlphabeticFilter]="false"></app-tabelle-filtrate-pl>
+        </ng-template>
+
+    </div>
+
+    <div class="page-box-transparent mrg-t-20">
+      <div class="row mrg-b-10">
+        <label>Esempio di tabella Filtrata con indice a lettera</label>
+      </div>
+      <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else filtratePl2">
+        <app-tabelle-filtrate-pl [tipoTab]="'row'" [itemsSelection]="itemsSelection" [selectedRow]="6" [scrollBar]="'scroll'" [useIndexAlphabeticFilter]="true"></app-tabelle-filtrate-pl>
+      </div>
+      <ng-template #filtratePl2>
+        <app-tabelle-filtrate-pl [tipoTab]="'row'" [itemsSelection]="itemsSelection" [selectedRow]="6" [scrollBar]="'auto'" [useIndexAlphabeticFilter]="true"></app-tabelle-filtrate-pl>
+      </ng-template>
+    </div>
+</div>
+
+<!-- TABELLA SELEZIONABILE -->
+<div *ngIf="currentUrl.indexOf('seleziona') > 0 " class="container" style="margin-top: 1.250em; min-height: 100%">
+    <div class="page-box-transparent mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Esempio di tabella Selezionabili</label>
+        </div>
+        <div class="row col-md-24  mrg-t-20" *ngIf="currentUrl.indexOf('scroll') > 0; else selezionabili">
+            <app-tabelle-selezionabili [scrollBar]="'scroll'"></app-tabelle-selezionabili>
+        </div>
+        <ng-template #selezionabili>
+            <app-tabelle-selezionabili [scrollBar]="'auto'"></app-tabelle-selezionabili>
+        </ng-template>
+
+    </div>
+</div>
+
+<!-- TABELLA INVESTIMENTI -->
+<div *ngIf="currentUrl.indexOf('investimenti') > 0" class="container">
+    <div class="page-box-transparent mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Esempio di tabella Investimenti</label>
+        </div>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else investimenti">
+            <app-tabelle-investimenti [tipoTab]="'row'" [selectedRow]="1" [scrollBar]="'scroll'"></app-tabelle-investimenti>
+        </div>
+        <ng-template #investimenti>
+            <app-tabelle-investimenti [tipoTab]="'row'" [selectedRow]="1" [scrollBar]="'auto'"></app-tabelle-investimenti>
+        </ng-template>
+
+    </div>
+</div>
+
+<!-- TABELLA CHECKBOX -->
+<div *ngIf="currentUrl.indexOf('checkbox') > 0" class="container">
+    <div class="page-box-transparent mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Esempio di tabella CheckBox</label>
+        </div>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else checkbox">
+            <div *ngIf="checkBoxColonne && checkBoxData">
+
+                <app-tabelle-checkbox
+                    [tipoTab]="'row'"
+                    [headerTab] = "checkBoxColonne"
+                    [dataTab] = "checkBoxData"
+                    [selectedRows] = "checkBoxIsActive"
+                    [scrollBar]="'scrool'">
+                 </app-tabelle-checkbox>
+
+            </div>
+        </div>
+        <ng-template #checkbox>
+            <div *ngIf="checkBoxColonne && checkBoxData">
+
+                <app-tabelle-checkbox
+                   [tipoTab]="'row'"
+                   [headerTab] = "checkBoxColonne"
+                   [dataTab] = "checkBoxData"
+                   [selectedRows] = "checkBoxIsActive"
+                   [scrollBar]="'auto'">
+                </app-tabelle-checkbox>
+
+            </div>
+
+        </ng-template>
+
+    </div>
+</div>
+
+<!-- TABELLA GRIGLIA -->
+<div *ngIf="currentUrl.indexOf('grid') > 0" class="container">
+    <div class="mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Esempio di tabella Grid</label>
+        </div>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else griglia">
+            <h3>Funzionalità non disponibile nelle tabelle tipo Grid</h3>
+        </div>
+        <ng-template #griglia>
+            <app-tabelle-griglia [gridTable]="gridTable"></app-tabelle-griglia>
+        </ng-template>
+
+    </div>
+</div>
+
+<!-- TABELLA ACCORDION -->
+<div *ngIf="currentUrl.indexOf('accordion') > 0" class="container">
+    <div class="page-box-transparent mrg-t-20">
+        <div class="row mrg-b-10">
+            <label>Tabella Accordion TIPO STANDARD</label>
+        </div>
+        <div class="row col-md-24" *ngIf="currentUrl.indexOf('scroll') > 0; else accordion">
+            <app-tabelle-accordion [tipoTab]="'row'" [selectedRow]="6" [scrollBar]="'scroll'"></app-tabelle-accordion>
+        </div>
+        <ng-template #accordion>
+            <app-tabelle-accordion [tipoTab]="'row'" [selectedRow]="6" [scrollBar]="'auto'"></app-tabelle-accordion>
+        </ng-template>
+
+    </div>
+
+    <!-- <nbp-dividing-line></nbp-dividing-line> -->
+
+    <!-- TABELLE ESPANDIBILE -->
+
+    <!-- PRIMA TABELLA ESPANDIBILE-->
+    <!-- <div class="page-box-white mrg-t-20">
+
+        <div style="margin-bottom:20px">
+            <label>Tabella Accordion TIPO ESPANDIBILE con templates customs - Esempio 1 </label>
+        </div>
+
+        <app-tabelle-espandibili [customRowsTable]="customRowsTable" [headingTable]="headingTable" [dataTable]="dataTable" [fieldsTable]="fieldsTable"
+            [selectedRow]="5" [scrollBar]="'auto'">
+
+            <ng-template let-row #template0>
+                <nbp-dividing-line nbpTitle="IO SONO LA PRIMA TABELLA"></nbp-dividing-line>
+                <div style="color:black; text-align:center">
+                    TEMPLATE SELEZIONATO : template0
+                </div>
+                <p>Dati prelevati da un array:</p>
+                <div>
+                    <h2>{{ row.name }}</h2>
+                    <p>{{ row.email }}</p>
+                </div>
+                <br>
+                <p>Tabella inserita in template con selettore : app-tabelle-semplici</p>
+                <br>
+                <div style="width:80%;margin-left:10%">
+                    <app-tabelle-semplici></app-tabelle-semplici>
+                </div>
+            </ng-template>
+
+            <ng-template let-row #template1>
+                <nbp-dividing-line nbpTitle="IO SONO LA PRIMA TABELLA"></nbp-dividing-line>
+                <div style="color:black; text-align:center">
+                    TEMPLATE SELEZIONATO : template1
+                </div>
+                <div>
+                    <h2>{{ row.name }}</h2>
+                </div>
+                <br>
+                <p>Tabella con selettore : app-tabelle-selezionabili e scrollbar visibile</p>
+                <br>
+                <div style="width:80%">
+                    <app-tabelle-selezionabili [scrollBar]="'scroll'"></app-tabelle-selezionabili>
+                </div>
+                <br>
+                <p>Tabella inserita in template con selettore : app-tabelle-semplici</p>
+                <br>
+                <div style="width:80%;margin-left:10%">
+                    <app-tabelle-semplici></app-tabelle-semplici>
+                </div>
+            </ng-template>
+
+            <ng-template let-row #template2>
+                <nbp-dividing-line nbpTitle="IO SONO LA PRIMA TABELLA"></nbp-dividing-line>
+                <div style="color:black; text-align:center">
+                    TEMPLATE SELEZIONATO : template2
+                </div>
+                <div>
+                    <h3>{{ row.email }}</h3>
+                </div>
+                <p>Tabella inserita in template con selettore : app-advanced-semplici della cjlib</p>
+                <div style="width:80%; margin-left:10px">
+                    <app-advanced-semplici></app-advanced-semplici>
+                </div>
+            </ng-template>
+
+            <ng-template let-row #template3>
+                <nbp-dividing-line nbpTitle="IO SONO LA PRIMA TABELLA"></nbp-dividing-line>
+                <div style="color:black; text-align:center">
+                    TEMPLATE SELEZIONATO : template3
+                </div>
+                <p>In questo spazio si puo inserire una qualsiasi tabella che deve essere personalizzata tramite il layout</p>
+            </ng-template>
+
+        </app-tabelle-espandibili>
+    </div> -->
+
+    <!-- SECONDA TABELLA ESPANDIBILE -->
+
+    <!-- <nbp-dividing-line></nbp-dividing-line> -->
+
+    <!-- <div class="page-box-transparent mrg-t-20">
+        <div style="margin-bottom:20px">
+            <label>Tabella Accordion TIPO ESPANDIBILE con templates customs - Esempio 2 </label>
+        </div>
+        <div class="row col-md-24  mrg-t-20">
+
+            <app-tabelle-espandibili [customRowsTable]="customRowsTable" [headingTable]="headingTable" [dataTable]="dataTable" [fieldsTable]="fieldsTable"
+                [selectedRow]="5" [scrollBar]="'auto'">
+
+                <ng-template let-row #template0>
+                    <nbp-dividing-line nbpTitle="IO SONO LA SECONDA TABELLA"></nbp-dividing-line>
+                    <div style="color:black; text-align:center">
+                        template0
+                    </div>
+                    <div>
+                        Dati visualizzati : TESTO STANDARD HTML
+                    </div>
+                    <div>
+                        <b>Pippo</b>, Paperina,
+                        <b>Pluto</b>, qui metto il mio codice HTML
+                    </div>
+                </ng-template>
+
+                <ng-template let-row #template1>
+                    <nbp-dividing-line nbpTitle="IO SONO LA SECONDA TABELLA"></nbp-dividing-line>
+                    <div style="color:black; text-align:center">
+                        template1
+                    </div>
+                    <div>
+                        Dati visualizzati in
+                        <b>BINDING</b> con un
+                        <b>Dati Custom</b>. Visualizzato solo campo Name che contiene nome + cognome. I dati sono formattati
+                        con un tag html H2
+                        <h2>{{ row.name }}</h2>
+                    </div>
+                </ng-template>
+
+                <ng-template let-row #template2>
+                    <nbp-dividing-line nbpTitle="IO SONO LA SECONDA TABELLA"></nbp-dividing-line>
+                    <div style="color:black; text-align:center">
+                        template2
+                    </div>
+                    <div>
+                        Dati visualizzati in
+                        <b>BINDING</b> con un
+                        <b>Dati Custom</b>. Visualizzata solo Email formattata con tag html H1.
+                        <h1>{{ row.email }}</h1>
+                    </div>
+                </ng-template>
+
+
+            </app-tabelle-espandibili>
+
+
+        </div>
+    </div> -->
+
+    <!-- TERZA TABELLA ESPANDIBILE -->
+    <!-- <nbp-dividing-line></nbp-dividing-line> -->
+
+    <div class="page-box-transparent mrg-t-20">
+        <div style="margin-bottom:-14px">
+            <label>Esempio con contenuto diverso</label>
+        </div>
+        <div class="row col-md-24  mrg-t-20">
+            <app-tabelle-espandibili [tipoTab]="'row'" [customRowsTable]="customRowsTableGaranzie" [headingTable]="headingTable" [dataTable]="dataTable"
+                [fieldsTable]="fieldsTable">
+
+                <ng-template let-row #template0>
+                    <nbp-dividing-line nbpTitle="IO SONO LA TERZA TABELLA"></nbp-dividing-line>
+                    <!-- <div style="color:black; text-align:center">
+                        template0
+                    </div> -->
+                    <!-- <p>Tabella creata Custom</p> -->
+                    <div class="row" style="margin-left:30px">
+                        <div class="col-md-5" style="background-color:white; margin:10px;">
+                            <p>Valore dela garanzia</p>
+                            <b>{{ row.valoregaranzia }}</b>
+                        </div>
+                        <div class="col-md-5" style="background-color:white; margin:10px">
+                            <p>Importo iscrizione ipotecaria</p>
+                            <b>{{ row.iscrizioneipotecaria }}</b>
+                        </div>
+                        <div class="col-md-5" style="background-color:white; margin:10px">
+                            <p>Importo garantito</p>
+                            <b>{{ row.importogarantito }}</b>
+                        </div>
+                        <div class="col-md-5" style="background-color:white; margin:10px">
+                            <p>Valore netto della garanzia</p>
+                            <b>{{ row.nettogaranzia }}</b>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </app-tabelle-espandibili>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="currentUrl.indexOf('inModale') > 0" class="container">
+
+
+        <div class="row text-center" style="margin-top: 100px">
+          <nbp-button [nbpLabel]="'TABELLA CONDIZIONI IN MODALE'" [nbpStyle]="primary" (nbpClick)="isOpenedModalCond=true"></nbp-button>
+          <nbp-button [nbpLabel]="'TABELLA STATICA IN MODALE'" [nbpStyle]="primary" (nbpClick)="isOpenedModalStatic=true"></nbp-button>
+        </div>
+
+        <nbp-modal [(nbpOpened)]='isOpenedModalCond' [nbpContainerStyle]="{'max-height':'unset'}">
+                <app-tabelle-condizioni-modal [tipoTab]="'row'"></app-tabelle-condizioni-modal>
+        </nbp-modal>
+
+        <nbp-modal [(nbpOpened)]='isOpenedModalStatic' [nbpContainerStyle]="{'max-width':'600px'}" >
+                <app-tabelle-static></app-tabelle-static>
+        </nbp-modal>
+<!--
+        <nbp-modal [(nbpOpened)]='isOpenedModalDinamic' >
+                <app-tabelle-recoursive [tipoTab]="'row'" [dataInput]="recTableData" ></app-tabelle-recoursive>
+        </nbp-modal> -->
+    <!-- Nuova Tabella -->
+
+</div>
+
+<!-- questa è una tabella che non piace!  Prima o poi servira!!!! La teniamo qua ma non viene visualizzata. -->
+<app-tabelle-responsive *ngIf="currentUrl.indexOf('responsi') > 0 " [scrollBar]="'auto'"></app-tabelle-responsive>

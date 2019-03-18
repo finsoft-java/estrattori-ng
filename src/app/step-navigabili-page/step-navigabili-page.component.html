@@ -1,0 +1,55 @@
+<nbp-step-navigabili  (nbpOnStepClick)='onNotify($event)' [nbpSteps]="steps"></nbp-step-navigabili>
+
+<div class="container main-container" style="margin-top: 1.250em; min-height: 100%">
+
+  <div *ngIf="isSelected(0)">
+    Lo step corrente è il primo: {{steps[0].name}}
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="width:100%; text-align:center">
+      <nbp-button [nbpLabel]="'Open Modal by change value'" [nbpStyle]="primary" (nbpClick)='openModal()' [tabindex]="7"></nbp-button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <nbp-modal #modalCancellazione [(nbpOpened)]="isOpened2"
+               (nbpOnButtonClicked)='onClickBtnModaleCancella($event)' >
+      Contenuto della modale
+    </nbp-modal>
+    <br>
+  </div>
+
+  <div *ngIf="isSelected(1)">
+    Lo step corrente è il secondo: {{steps[1].name}}
+  </div>
+
+  <div *ngIf="isSelected(2)">
+    Lo step corrente è il terzo: {{steps[2].name}}
+  </div>
+
+  <div *ngIf="isSelected(3)">
+    Lo step corrente è il quarto: {{steps[3].name}}
+  </div>
+
+  <div *ngIf="isSelected(4)">
+    Lo step corrente è il quinto: {{steps[4].name}}
+  </div>
+
+  <div *ngIf="isSelected(5)">
+    Lo step corrente è il quinto: {{steps[5].name}}
+  </div>
+
+  <!-- <div class="row" style="margin-top:20px">
+    <div class="pull-left" *ngIf="notFirst()">
+      <nbp-button [nbpLabel]="'Annulla'" [nbpStyle]="primary" (nbpClick)="indietro()">
+      </nbp-button>
+    </div>
+    <div class="pull-right" *ngIf="notLast()">
+      <nbp-button [nbpLabel]="'Conferma'" [nbpStyle]="primary" (nbpClick)="avanti()">
+      </nbp-button>
+    </div>
+  </div> -->
+</div>

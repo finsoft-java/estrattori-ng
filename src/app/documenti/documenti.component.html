@@ -1,0 +1,102 @@
+<div class="container container-documenti-section">
+
+  <div class="row descrizione" style="margin-top: 1.250em;">
+    <span>Fotografa o scansiona il <strong>fronte</strong> e il <strong>retro</strong> dei tuoi documenti, poi trascina qui sotto i file per caricarli sul sito.<br>
+
+        Le immagini possono essere in formato pdf, jpeg, png e gif. Il limite massimo è 10 MB.</span>
+  </div>
+
+  <div class="row panel-doc">
+    <div class="col-sm-12">
+      <nbp-upload-file (nbpEventIcon)="iconFn($event)" [labelTitleDoc]="label1" [typeUpload]="'single'" [typeFile]="tipoFile" (nbpUploadFile)="changeFile1($event)"></nbp-upload-file>
+    </div>
+    <div class="col-sm-12">
+      <nbp-upload-file [labelTitleDoc]="label2" [typeUpload]="'multiple'" [typeFile]="tipoFile" (nbpUploadFile)="changeFile2($event)"></nbp-upload-file>
+    </div>
+  </div>
+
+  <div class="row p-l-8 p-r-7">
+    <div class="col-sm-8">
+      <nbp-input-container [nbpLabel]="'Tipo di documento'">
+        <nbp-combo #combo1 [nbpDataSource]="itemsDataSource" name="combo1" [(ngModel)]="selectedItem" [required]="true" [disabled]="disabled"
+          placeholder="Seleziona" nbpShowEmptyValue nbpShowValidation=true>
+        </nbp-combo>
+      </nbp-input-container>
+    </div>
+    <div class="col-sm-6">
+      <nbp-input-container [nbpLabel]="'Numero di documento'">
+        <nbp-input-text name="paese" [(ngModel)]="nDocumento" required placeholder="Inserisci testo"
+          nbpShowValidation=true>
+        </nbp-input-text>
+      </nbp-input-container>
+    </div>
+    <div class="col-sm-1">
+        <nbp-tooltip style="display:inline-block; margin-top: 2.4em" [nbpSize]="toltipDimension" [nbpPosition]="'Top'"
+          [nbpVisibilityStrategy]="'hover'" [nbpText]="'lorem ipsum dolor sit amet consectetur adipiscing elit'">
+          <span class="icomoon-Simboli_Risorsa-1" style="font-size:30px; margin-left:10px;" [ngStyle]="{'vertical-align': !runIE ? 'middle' : '' }"></span>
+        </nbp-tooltip>
+    </div>
+    <div class="col-sm-offset-1 col-sm-8">
+      <nbp-input-container [nbpLabel]="'Emesso da'">
+        <nbp-combo #combo2 [nbpDataSource]="itemsDataSource1" name="combo2" [(ngModel)]="selectedItem1" [required]="true" [disabled]="disabled"
+          placeholder="Seleziona" nbpShowEmptyValue nbpShowValidation=true>
+        </nbp-combo>
+      </nbp-input-container>
+    </div>
+  </div>
+
+  <div class="row p-l-8 p-r-7">
+    <div class="col-sm-8">
+      <nbp-input-container [nbpLabel]="'Paese'">
+        <nbp-input-text name="paese" [(ngModel)]="paese" required placeholder="Inserisci testo"
+          nbpShowValidation=true>
+        </nbp-input-text>
+      </nbp-input-container>
+    </div>
+    <div class="col-sm-8">
+        <nbp-input-container [nbpLabel]="'Provincia'">
+          <nbp-input-text name="provincia" [(ngModel)]="provincia" required placeholder="Inserisci testo"
+            nbpShowValidation=true>
+          </nbp-input-text>
+        </nbp-input-container>
+      </div>
+      <div class="col-sm-8">
+          <nbp-input-container [nbpLabel]="'Comune'">
+            <nbp-input-text name="comune" [(ngModel)]="comune" required placeholder="Inserisci testo"
+              nbpShowValidation=true>
+            </nbp-input-text>
+          </nbp-input-container>
+        </div>
+  </div>
+
+  <div class="row p-l-8 p-r-7">
+    <div class="col-sm-6">
+      <nbp-input-container [nbpLabel]="'Data inizio'">
+        <nbp-calendar-generic name="datePicker_1" [(ngModel)]="currentDate1" (ngModelChange)="changeModel1($event)" required validateDate
+          nbpShowValidation=true>
+        </nbp-calendar-generic>
+      </nbp-input-container>
+    </div>
+    <div class="col-sm-1">
+        <nbp-tooltip style="display:inline-block; margin-top: 2.4em" [nbpSize]="toltipDimension" [nbpPosition]="'Top'"
+          [nbpVisibilityStrategy]="'hover'" [nbpText]="'lorem ipsum dolor sit amet consectetur adipiscing elit'">
+          <span class="icomoon-Simboli_Risorsa-1" style="font-size:30px; margin-left:10px;" [ngStyle]="{'vertical-align': !runIE ? 'middle' : '' }"></span>
+        </nbp-tooltip>
+    </div>
+    
+    <div class="col-sm-offset-1 col-sm-6">
+      <nbp-input-container [nbpLabel]="'Data di scadenza'">
+        <nbp-calendar-generic name="datePicker_2" [(ngModel)]="currentDate2" (ngModelChange)="changeModel2($event)" required validateDate
+          nbpShowValidation=true>
+        </nbp-calendar-generic>
+      </nbp-input-container>
+    </div>
+    <div class="col-sm-1">
+        <nbp-tooltip style="display:inline-block; margin-top: 2.4em" [nbpSize]="toltipDimension" [nbpPosition]="'Top'"
+          [nbpVisibilityStrategy]="'hover'" [nbpText]="'lorem ipsum dolor sit amet consectetur adipiscing elit'">
+          <span class="icomoon-Simboli_Risorsa-1" style="font-size:30px; margin-left:10px;" [ngStyle]="{'vertical-align': !runIE ? 'middle' : '' }"></span>
+        </nbp-tooltip>
+    </div>
+  </div>
+
+</div>

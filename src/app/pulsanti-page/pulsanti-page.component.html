@@ -1,0 +1,185 @@
+<router-outlet></router-outlet>
+<div class="container main-container" style="margin-top: 1.250em; min-height: 100%">
+  <div class="row" style="text-align: center; background-color: #fff">
+
+    <div class="row mrg-b-20">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="primary" (nbpClick)="callback($event)" firstFocus="true"
+        [tabindex]="1"></nbp-button>
+      <nbp-button routerLink="/pagination" [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="primary" disabled (nbpClick)="callback($event)"></nbp-button>
+    </div>
+
+    <div class="row mrg-b-20">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="primary" (nbpClick)="callback($event)"></nbp-button>
+      <nbp-button routerLink="/pagination" [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="primary" disabled (nbpClick)="callback($event)"></nbp-button>
+    </div>
+
+    <div class="row mrg-b-20">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" (nbpClick)="callback($event)"></nbp-button>
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" disabled (nbpClick)="callback($event)"></nbp-button>
+    </div>
+
+    <div class="row mrg-b-20">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="primary" (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="primary" disabled (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+    </div>
+
+    <div class="row mrg-b-20">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" disabled (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+    </div>
+
+    <div class="row mrg-b-20 background-panel-green" style="padding: 20px">
+      <div class="row">
+        <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGreen" (nbpClick)="callback($event)"></nbp-button>
+        <nbp-button disabled [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGreen" (nbpClick)="callback($event)"></nbp-button>
+      </div>
+      <br>
+      <div class="row">
+        <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGreen" (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+        <nbp-button disabled [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGreen" (nbpClick)="callback($event)"
+          nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+      </div>
+    </div>
+
+    <div class="row mrg-b-20 background-panel-gray" style="padding: 20px">
+      <div class="row">
+        <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGray" (nbpClick)="callback($event)"></nbp-button>
+        <nbp-button disabled [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGray" (nbpClick)="callback($event)"></nbp-button>
+      </div>
+      <br>
+      <div class="row">
+        <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGray" (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+        <nbp-button disabled [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGray" (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+      </div>
+      <br>
+      <div class="row">
+        <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGrayPrimary" (nbpClick)="callback($event)"></nbp-button>
+        <nbp-button disabled [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGrayPrimary" (nbpClick)="callback($event)"></nbp-button>
+      </div>
+      <br>
+      <div class="row">
+        <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGrayPrimary" (nbpClick)="callback($event)" nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+        <nbp-button disabled [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="backgroundGrayPrimary" (nbpClick)="callback($event)"
+          nbpIcon="ico-comuni-visualizzaricevuta"></nbp-button>
+      </div>
+    </div>
+    <!-- ------------------------------------------ /ACTION - ICON  -------------------------------------------- -->
+    <!-- ------------------------------------------ SELECT - NO ICON -------------------------------------------- -->
+
+    <div class="row mrg-b-24">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="secondary" [nbpType]="select" (nbpClick)="callback($event)"></nbp-button>
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="secondary" [nbpType]="select" disabled (nbpClick)="callback($event)"></nbp-button>
+    </div>
+
+    <br>
+
+    <div class="row mrg-b-24">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="secondary" [nbpType]="select" (nbpClick)="callback($event)"
+        nbpIcon="ico-comuni-c-persona-n"></nbp-button>
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="secondary" [nbpType]="select" disabled (nbpClick)="callback($event)"
+        nbpIcon="ico-comuni-c-persona-n"></nbp-button>
+    </div>
+    <!--
+    <br>
+
+    <div class="row mrg-b-24">
+      <nbp-button [nbpStyle]="secondary" [nbpType]="select" (nbpClick)="callback($event)" nbpIcon="ico-comuni-c-persona-n"></nbp-button>
+      <nbp-button [nbpStyle]="secondary" [nbpType]="select" disabled (nbpClick)="callback($event)" nbpIcon="ico-comuni-c-persona-n"></nbp-button>
+    </div> -->
+
+
+    <br>
+
+    <div class="row mrg-b-24">
+      <nbp-button [nbpLabel]="'Testo Esempio' | translate" [nbpStyle]="checkStyle" [nbpType]="check" (nbpClick)="callback($event)"></nbp-button>
+      <!-- <nbp-button [nbpStyle]="secondary" [nbpType]="select" disabled (nbpClick)="callback($event)" nbpIcon="ico-comuni-c-persona-n"></nbp-button> -->
+    </div>
+
+    <br>
+
+    <div class="row mrg-b-24">
+      <nbp-button [nbpLabel]="'EMILIANO CASETTI'" [nbpStyle]="profileStyle" [nbpType]="profile" (nbpClick)="callback($event)" nbpIcon="ico-comuni-c-persona-n"></nbp-button>
+      <!-- <nbp-button [nbpStyle]="secondary" [nbpType]="select" disabled (nbpClick)="callback($event)" nbpIcon="ico-comuni-c-persona-n"></nbp-button> -->
+    </div>
+
+
+    <!-- ON/OFF -->
+
+    <!-- <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [type]="'binary'" (clickFn)="onSwitchSelection()" [disabled]="false" [selected]="selectedSwitchBinary">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [type]="'binary'" (clickFn)="onSwitchSelection()" [disabled]="false" [selected]="selectedSwitchBinary2">
+        </nbp-switch-generic>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [choices]="switchChoicesIconText" [type]="'iconText'" (clickFn)="onSwitchSelection()" [disabled]="false"
+          [selected]="selectedSwitchIconText" [textUp]="false">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [choices]="switchChoicesIconTextSmall" [type]="'iconTextSmall'" (clickFn)="onSwitchSelection()" [disabled]="false"
+          [selected]="selectedSwitchIconTextSmall">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [choices]="switchChoicesIconTextUp" [type]="'iconText'" (clickFn)="onSwitchSelection()" [disabled]="false"
+          [selected]="selectedSwitchIconText2" [textUp]="true" [tabindex]="2">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [choices]="switchChoicesText" [type]="'text'" (clickFn)="onSwitchSelection()" [disabled]="false" [selected]="selectedSwitchText">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [choices]="switchChoicesTextSmall" [type]="'textSmall'" (clickFn)="onSwitchSelection()" [disabled]="false"
+          [selected]="selectedSwitchTextSmall">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-switch-generic [choices]="switchChoicesIcon" [type]="'icon'" (clickFn)="onSwitchSelection()" [disabled]="false" [selected]="selectedSwitchIcon">
+        </nbp-switch-generic>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-button-generation [nbpLabel]="'Nuovo Messaggio' | translate" (nbpClick)="callbackGeneraAzione($event)" nbpIcon="icomoon-Messagi_messagio8"></nbp-button-generation>
+        <nbp-button-generation [nbpLabel]="'Nuovo Messaggio' | translate" (nbpClick)="callbackGeneraAzione($event)" disabled nbpIcon="icomoon-Messagi_messagio8"></nbp-button-generation>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-24 mrg-t-20 text-center">
+        <nbp-button-generation [nbpType]="'ROUND'" [nbpLabel]="'Nuovo Messaggio' | translate" (nbpClick)="callbackGeneraAzione($event)"></nbp-button-generation>
+        <nbp-button-generation [nbpType]="'ROUND'" [nbpLabel]="'Nuovo Messaggio' | translate" (nbpClick)="callbackGeneraAzione($event)"
+          disabled></nbp-button-generation>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nbp-bottom-page-button nbpTitleBottom="Titolo Sezione" [nbpButtonActionList]="buttonActionList" ></nbp-bottom-page-button>
