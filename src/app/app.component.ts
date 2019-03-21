@@ -98,6 +98,15 @@ export class AppComponent implements OnInit {
                       link: 'elenco-estrattori'
                     }
                   ]
+                },{
+                  items: [
+                    {
+                      key: '2',
+                      icon: '',
+                      label: 'Grafici Finsoft',
+                      link: 'grafici-finsoft'
+                    }
+                  ]
                 }
               ]
             }

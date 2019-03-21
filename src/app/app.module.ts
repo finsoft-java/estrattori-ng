@@ -96,6 +96,9 @@ import { RicercaPageComponent } from './ricerca-page/ricerca-page.component';
 import {NbpStringify} from './home/stringiy.pipe';
 import { EstrattoriComponent } from './estrattori/estrattori.component';
 import { ElencoEstrattoriComponent } from './elenco-estrattori/elenco-estrattori.component';
+import { GraficiFinsoftComponent } from './grafici-finsoft/grafici-finsoft.component';
+import { ChartsModule } from 'ng4-charts';
+
 
 // import { NbpSearchBoxComponent } from './nbp-search-box/nbp-search-box.component';
 // import {ClickOutsideModule} from "ng4-click-outside"
@@ -179,6 +182,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NbpStringify,
     EstrattoriComponent,
     ElencoEstrattoriComponent,
+    GraficiFinsoftComponent,
     // NbpButtonFilterComponent,
 
     // NbpSearchBoxComponent
@@ -186,6 +190,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     // TranslateModule.forRoot(),
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

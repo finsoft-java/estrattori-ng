@@ -38,6 +38,7 @@ import { BonificiPagamentiComponent } from './bonifici-pagamenti/bonifici-pagame
 import { EtichettePageComponent } from './etichette-page/etichette-page.component';
 import {RicercaPageComponent} from './ricerca-page/ricerca-page.component';
 import { ElencoEstrattoriComponent } from './elenco-estrattori/elenco-estrattori.component';
+import { GraficiFinsoftComponent } from './grafici-finsoft/grafici-finsoft.component';
 
 
 
@@ -63,6 +64,14 @@ const routes: Routes = [
     data: {
       title: 'Elenco Estrattori',
       subtitle: 'Elenco Estrattori'
+    }
+  },{
+    path: 'grafici-finsoft',
+    component: GraficiFinsoftComponent,
+    children: [],
+    data: {
+      title: 'Grafici Finsoft',
+      subtitle: 'Grafici Finsoft'
     }
   },
   {
