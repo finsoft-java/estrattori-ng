@@ -1,0 +1,1 @@
+<div class="breadcrumb-container"><ul class="nbp-breadcrumb container"><li *ngFor="let route of nbpBreadcrumbStructure; let last = last"><a><span [ngClass]="{'nbp-breadcrumb-current': route === nbpCurrentPosition}">{{route.name}} <span *ngIf="!last" class="icon ico-comuni-freccia-dx" [style.verticalAlign]="'middle'"></span></span></a></li></ul></div>
